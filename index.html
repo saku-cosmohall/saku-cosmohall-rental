@@ -432,12 +432,12 @@
         <div class="steps-container">
             <div class="step step-1">
                 <div class="step-number">1</div>
-                <h3 class="step-title">Webで予約<br>（3日前まで）</h3>
+                <h3 class="step-title">Webで予約</h3>
                 <div class="step-icon">
                     <img src="step1.png" alt="Web予約イラスト">
                 </div>
                 <p class="step-description">
-                    <a href="https://v2.spm-cloud.com/user/saku/" target="_blank" rel="noopener noreferrer">
+                    利用日の3日前までに<a href="https://v2.spm-cloud.com/user/saku/" target="_blank" rel="noopener noreferrer">
     佐久市の公共施設のWeb予約サービス
   </a>で予約
                 </p>
@@ -446,27 +446,27 @@
 
             <div class="step step-2">
                 <div class="step-number">2</div>
-                <h3 class="step-title">室料支払い<br>（振込み/窓口）</h3>
+                <h3 class="step-title">室料支払い</h3>
                 <div class="step-icon">
                     <img src="step2.png" alt="室料支払いイラスト">
                 </div>
-                <p class="step-description">後日、郵送で請求書が届くので、銀行振込 or 窓口支払</p>
+                <p class="step-description">後日、郵送で請求書が届きます。銀行振込 or 窓口支払をお願いします</p>
                 <div class="arrow"><img src="arrow.png" alt="矢印"></div>
             </div>
 
             <div class="step step-3">
                 <div class="step-number">3</div>
-                <h3 class="step-title">利用<br>記録</h3>
+                <h3 class="step-title">利用</h3>
                 <div class="step-icon">
                     <img src="step3.png" alt="利用イラスト">
                 </div>
-                <p class="step-description">空調や電源などの設備利用ができ、所定の時間に記入</p>
+                <p class="step-description">当日は、まずは事務所へお越しください。空調や電源などの設備利用については、実際に利用した時間を記録いただきます</p>
                 <div class="arrow"><img src="arrow.png" alt="矢印"></div>
             </div>
 
             <div class="step step-4">
                 <div class="step-number">4</div>
-                <h3 class="step-title">設備料精算<br>退室</h3>
+                <h3 class="step-title">設備料精算</h3>
                 <div class="step-icon">
                     <img src="step4.png" alt="設備料精算イラスト">
                 </div>
@@ -1893,7 +1893,7 @@
         align-items: center;
         justify-content: center;
         color: white;
-        font-size: 1.8rem;
+        font-size: 1.2rem;
         font-weight: bold;
         margin-bottom: 1.5rem;
         position: relative;
@@ -1904,8 +1904,8 @@
         content: "";
         display: block;
         background-color: var(--mint);
-        width: 60px;
-        height: 60px;
+        width: 32px;
+        height: 32px;
         border-radius: 50%;
         z-index: 0;
         position: absolute;
@@ -1924,7 +1924,7 @@
         font-size: 1.4rem;
         font-weight: bold;
         color: var(--mint);
-        margin-bottom: 2rem;
+        margin-bottom: 1.5rem;
         margin-top: 0;
     }
     
@@ -1950,8 +1950,9 @@
         font-size: 1rem;
         color: var(--text-gray);
         line-height: 1.6;
-        max-width: 220px;
+        max-width: 240px;
         margin: 0 auto;
+        text-align: left;
     }
     
     .arrow {
@@ -2018,13 +2019,6 @@
     }
     
     @media (max-width: 959px) {
-        .step-number {
-            font-size: 1.5rem;
-        }
-        .step-number::before {
-            width: 48px;
-            height: 48px;
-        }
         .step-title {
             font-size: 1.2rem;
         }
@@ -2317,5 +2311,3 @@
         padding: 2rem 1rem;
     }
 </style>
-
-
