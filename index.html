@@ -111,8 +111,8 @@
             <br> 気になったら、まずはお気軽にお問い合わせください。
         </p>
         <div class="button-wrapper">
-            <button class="sub-button">お問合せ</button>
-            <button class="main-button">Web予約</button>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSf0cUstFiFvNPoKkoUxqmEICZtTfhGPbX7qwjmYBRI7k4gXXg/viewform?usp=header" class="sub-button" target="_blank" rel="noopener noreferrer" onclick="closeMenu()">お問合せ</a>
+            <a href="https://v2.spm-cloud.com/user/saku/" class="main-button" target="_blank" rel="noopener noreferrer" onclick="closeMenu()">Web予約</a>
         </div>
     </section>
 
@@ -140,7 +140,7 @@
     <section id="price" class="price">
         <div class="angled-lines">コスモホールを使いませんか？</div>
         <h2>3時間200円〜<br>手頃な料金で借りられます</h2>
-        <p>ホール以外は飲食もOK<br><span>冷暖房、電源などを使う場合は別途費用がかかります</span></p>
+        <p>ホール以外は飲食もOK<br><span>※冷暖房、電源などを使う場合は別途費用がかかります</span><br><span>※会議室の17時以降の利用は、夜間料金5230円がプラスになります</span></p>
     </section>
 
     <section class="room-section">
@@ -200,12 +200,22 @@
         <p class="text-align-center">※冷暖房費などの設備料は含まれません</p>
         <form id="feeForm">
             <label>施設:
-    <select id="facility">
+    <select id="facility" onchange="toggleOptions()">
       <option value="大ホール">大ホール</option>
       <option value="小ホール">小ホール</option>
       <option value="練習室">練習室</option>
       <option value="楽屋">楽屋</option>
-      <option value="会議室">会議室</option>
+      <option value="1階会議室">1階会議室</option>
+      <option value="展示コーナー">展示コーナー</option>
+      <option value="会議室1">会議室1</option>
+      <option value="会議室2">会議室2</option>
+      <option value="会議室3">会議室3</option>
+      <option value="学習室1">学習室1</option>
+      <option value="学習室2">学習室2</option>
+      <option value="茶室">茶室</option>
+      <option value="調理室">調理室</option>
+      <option value="研修室">研修室</option>
+      <option value="ふるさと広場">ふるさと広場</option>
       <!-- 必要に応じて追加 -->
     </select>
   </label><br>
@@ -389,11 +399,37 @@
                             "9-17": 16750,
                             "13-22": 21990,
                             "9-22": 29320
-                        }
-                    }
-                }
-                // その他施設の料金も追加可能
+                        },
+                    },
+                },
+                "練習室": { "all": {"none":{"9-12":1250,"13-17":1360,"18-22":1570,"9-17":2610,"13-22":2930,"9-22":4180}}},
+                "楽屋": { "all": {"none":{"9-12":520,"13-17":620,"18-22":730,"9-17":1140,"13-22":1350,"9-22":1870}}},
+                "1階会議室": { "all": {"none":{"9-12":1040,"13-17":1360,"18-22":1570,"9-17":2400,"13-22":2930,"9-22":3970}}},
+                "会議室1": { "all": {"none":{"9-12":200,"13-17":310,"18-22":410,"9-17":510,"13-22":720,"9-22":920}}},
+                "会議室2": { "all": {"none":{"9-12":200,"13-17":310,"18-22":410,"9-17":510,"13-22":720,"9-22":920}}},
+                "学習室1": { "all": {"none":{"9-12":310,"13-17":410,"18-22":620,"9-17":720,"13-22":1030,"9-22":1340}}},
+                "学習室2": { "all": {"none":{"9-12":310,"13-17":410,"18-22":620,"9-17":720,"13-22":1030,"9-22":1340}}},
+                "茶室": { "all": {"none":{"9-12":310,"13-17":410,"18-22":620,"9-17":720,"13-22":1030,"9-22":1340}}},
+                "調理室": { "all": {"none":{"9-12":2090,"13-17":2510,"18-22":2930,"9-17":4600,"13-22":5440,"9-22":7530}}},
+                "研修室": { "all": {"none":{"9-12":200,"13-17":310,"18-22":410,"9-17":510,"13-22":720,"9-22":920}}},
+                "ふるさと広場": { "all": {"none":{"9-12":930,"13-17":1240,"18-22":1240,"9-17":2480,"13-22":2790,"9-22":3410}}},
             };
+            
+            // 利用日・入場料区分を施設に応じて切り替え
+function toggleOptions() {
+  const facility = document.getElementById("facility").value;
+  const dayType = document.getElementById("dayType");
+  const admissionType = document.getElementById("admissionType");
+
+  if (["大ホール","小ホール"].includes(facility)) {
+    dayType.disabled = false;
+    admissionType.disabled = false;
+  } else {
+    dayType.disabled = true;
+    admissionType.disabled = true;
+    admissionType.value = "none"; // 自動で徴収なしに設定
+  }
+}
 
 
             function calculateFee() {
@@ -402,8 +438,9 @@
                 const admission = document.getElementById("admissionType").value;
                 const timeSlot = document.getElementById("timeSlot").value;
                 const purpose = document.getElementById("purpose").value;
-
-                let baseFee = priceTable[facility]?.[dayType]?.[admission]?.[timeSlot] || 0;
+                // 平日/休日の区別があるのは大ホール・小ホールだけ、それ以外は'all'
+                const dayKey = ["大ホール","小ホール"].includes(facility) ? dayType : "all";
+                let baseFee = priceTable[facility]?.[dayKey]?.[admission]?.[timeSlot] || 0;
 
                 // 利用目的加算
                 if (purpose === "business") {
@@ -421,6 +458,8 @@
 
                 document.getElementById("result").innerHTML = `料金: ${Math.floor(baseFee)}円`;
             }
+            // 初期表示用に呼び出し
+                toggleOptions();
         </script>
     </section>
 
@@ -617,7 +656,7 @@
         </div>
     </section>
     <footer>
-        <p>&copy; 2026 佐久市コスモホール All Rights Reserved.</p>
+        <p>&copy;2025 佐久市コスモホール<br>All Rights Reserved.</p>
     </footer>
 </body>
 
@@ -850,6 +889,15 @@
     .text-align-center {
         text-align: center;
     }
+        select:disabled {
+            background-color: #f0f0f0 !important;
+            color: #999 !important;
+            cursor: not-allowed !important;
+            opacity: 0.6;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+        }
     
     @media (max-width: 959px) {
         h2 {
@@ -1329,6 +1377,7 @@
     
     .room-cards {
         display: flex;
+        justify-content: center;
         overflow-x: auto;
         /* 横スクロール可能に */
         padding-bottom: 1rem;
@@ -1337,7 +1386,7 @@
         /* スクロールをカード単位で止める */
         gap: 2.5rem;
         margin-top: 2rem;
-        margin-bottom: 3rem;
+        margin-bottom: 4rem;
         position: relative;
         z-index: 2;
     }
@@ -1578,6 +1627,7 @@
     
     h3.price-calc {
         margin-bottom: 0;
+        font-size: 1.5rem;
     }
     
     .pricing-calculator {
@@ -1618,7 +1668,6 @@
         text-align: right;
         font-size: 1rem;
         font-weight: 500;
-        margin-bottom: 20px;
         letter-spacing: 0.02em;
         line-height: 1.6;
         gap: 16px;
@@ -1745,7 +1794,8 @@
         background: linear-gradient(135deg, #7dd3c0, #5fb8a5);
         color: white;
         border: none;
-        padding: 16px 40px;
+        height: 48px;
+        padding: 0 24px;
         border-radius: 25px;
         font-size: 1.1rem;
         font-weight: 600;
@@ -1786,27 +1836,6 @@
         display: flex;
         align-items: center;
         justify-content: center;
-    }
-    
-    #result::before {
-        content: '';
-        position: absolute;
-        top: -50%;
-        left: -50%;
-        width: 200%;
-        height: 200%;
-        background: radial-gradient(circle, rgba(125, 211, 192, 0.03) 0%, transparent 70%);
-        animation: shimmer 3s ease-in-out infinite;
-    }
-    
-    @keyframes shimmer {
-        0%,
-        100% {
-            transform: rotate(0deg);
-        }
-        50% {
-            transform: rotate(180deg);
-        }
     }
     
     #result:empty::after {
@@ -2042,7 +2071,9 @@
         border-radius: var(--border-radius);
         padding: 6rem 3rem;
     }
-    
+    .faq h3 {
+        text-align: left;
+    }
     .faq-container {
         max-width: 800px;
         margin: 0 auto;
@@ -2301,6 +2332,16 @@
     .map {
         width: 50%;
         min-height: 300px;
+    }
+    @media (max-width: 599px) {
+        .access-wrapper {
+            flex-direction: column;
+        }
+        .access-info,
+        .map {
+            width: 100%;
+            min-height: 100%;
+        }
     }
     /* フッター */
     
