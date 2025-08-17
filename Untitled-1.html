@@ -1,0 +1,2319 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>コスモホール｜貸しスペース</title>
+</head>
+
+<body>
+    <header>
+        <h1><a href="#" class="top-link">佐久市コスモホール</a></h1>
+        <nav>
+            <a href="#price">料金</a>
+            <a href="#how-to-use">利用方法</a>
+            <a href="#faq">よくある質問</a>
+            <a href="#testimonial">利用の実例</a>
+            <a href="#access">アクセス</a>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSf0cUstFiFvNPoKkoUxqmEICZtTfhGPbX7qwjmYBRI7k4gXXg/viewform?usp=header" class="sub-button" target="_blank" rel="noopener noreferrer">お問合せ</a>
+            <a href="https://v2.spm-cloud.com/user/saku/" class="main-button" target="_blank" rel="noopener noreferrer">Web予約</a>
+        </nav>
+        <!-- ハンバーガーメニューボタン -->
+        <div class="hamburger" onclick="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </header>
+
+    <!-- モバイル用メニュー -->
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-close-button" onclick="closeMenu()">×</div>
+        <a href="#price" onclick="closeMenu()">料金</a>
+        <a href="#how-to-use" onclick="closeMenu()">利用方法</a>
+        <a href="#faq" onclick="closeMenu()">よくある質問</a>
+        <a href="#testimonial" onclick="closeMenu()">利用の実例</a>
+        <a href="#access" onclick="closeMenu()">アクセス</a>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSf0cUstFiFvNPoKkoUxqmEICZtTfhGPbX7qwjmYBRI7k4gXXg/viewform?usp=header" class="sub-button" target="_blank" rel="noopener noreferrer" onclick="closeMenu()">お問合せ</a>
+        <a href="https://v2.spm-cloud.com/user/saku/" class="main-button" target="_blank" rel="noopener noreferrer" onclick="closeMenu()">Web予約</a>
+    </div>
+    <script>
+        function toggleMenu() {
+            const hamburger = document.querySelector('.hamburger');
+            const mobileMenu = document.getElementById('mobileMenu');
+
+            hamburger.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+
+            // メニューが開いている時はスクロールを無効化
+            if (mobileMenu.classList.contains('active')) {
+                document.body.style.overflow = 'hidden';
+            } else {
+                document.body.style.overflow = '';
+            }
+        }
+
+        function closeMenu() {
+            const hamburger = document.querySelector('.hamburger');
+            const mobileMenu = document.getElementById('mobileMenu');
+
+            hamburger.classList.remove('active');
+            mobileMenu.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        // 外側をクリックした時にメニューを閉じる
+        document.addEventListener('click', function(e) {
+            const mobileMenu = document.getElementById('mobileMenu');
+            const hamburger = document.querySelector('.hamburger');
+
+            if (mobileMenu.classList.contains('active') &&
+                !mobileMenu.contains(e.target) &&
+                !hamburger.contains(e.target)) {
+                closeMenu();
+            }
+        });
+
+        // リサイズ時の処理
+        window.addEventListener('resize', function() {
+            const mobileMenu = document.getElementById('mobileMenu');
+            if (window.innerWidth > 959 && mobileMenu.classList.contains('active')) {
+                closeMenu();
+            }
+        });
+    </script>
+    <section class="hero">
+        <div class="slider-wrapper">
+            <div class="slider-track">
+                <!-- 画像を10枚並べる -->
+                <img src="img_daihall.png" alt="大ホール">
+                <img src="img_syouhall1.png" alt="小ホール">
+                <img src="img_rensyuu.png" alt="練習室">
+                <img src="img_oobeya.png" alt="楽屋">
+                <img src="img_kaigishitu2.png" alt="会議室">
+                <img src="img_gakushu.jpg" alt="学習室">
+                <img src="img_chouri.png" alt="調理室">
+
+                <!-- 同じ画像をもう一周分並べて無限ループに -->
+                <img src="img_daihall.png" alt="大ホール">
+                <img src="img_syouhall1.png" alt="小ホール">
+                <img src="img_rensyuu.png" alt="練習室">
+                <img src="img_oobeya.png" alt="楽屋">
+                <img src="img_kaigishitu2.png" alt="会議室">
+                <img src="img_gakushu.jpg" alt="学習室">
+                <img src="img_chouri.png" alt="調理室">
+            </div>
+        </div>
+        <h2>色々つかえる<br>佐久市コスモホール</h2>
+        <p>臼田I.Cから車で1分<br> コスモホールは演奏や演劇だけでなく、個人で自由に使えます
+            <br> 「こんな使い方してもいいの？料金は？」
+            <br> 気になったら、まずはお気軽にお問い合わせください。
+        </p>
+        <div class="button-wrapper">
+            <button class="sub-button">お問合せ</button>
+            <button class="main-button">Web予約</button>
+        </div>
+    </section>
+
+    <section class="pain-points">
+        <div class="pain-point">
+            <h3>みんなで集まりたいけど<br>部屋が散らかってる</h3>
+            <figure class="pain-point-image">
+                <img src="img-pain1.png" alt="">
+            </figure>
+        </div>
+        <div class="pain-point">
+            <h3>一人になって<br>集中したい</h3>
+            <figure class="pain-point-image">
+                <img src="img-pain2.png" alt="">
+            </figure>
+        </div>
+        <div class="pain-point">
+            <h3>思いっきり<br>大きい音出したい</h3>
+            <figure class="pain-point-image">
+                <img src="img-pain3.png" alt="">
+            </figure>
+        </div>
+    </section>
+
+    <section id="price" class="price">
+        <div class="angled-lines">コスモホールを使いませんか？</div>
+        <h2>3時間200円〜<br>手頃な料金で借りられます</h2>
+        <p>ホール以外は飲食もOK<br><span>冷暖房、電源などを使う場合は別途費用がかかります</span></p>
+    </section>
+
+    <section class="room-section">
+        <h2 class="title"><small>PRICE</small>料金</h2>
+        <div class="room-cards">
+            <div class="room-card room1">
+                <div class="card-main">
+                    <p class="label">集中したいときいちおし！</p>
+                    <div class="room-price">¥200/3h〜</div>
+                    <div class="room-type-wrapper">
+                        <div class="room-type">研修室</div>
+                    </div>
+                </div>
+                <p class="description">
+                    定員18名。廊下の奥にあって、他の会議室とくっついていない。集中したいときに。
+                </p>
+            </div>
+            <div class="room-card room2">
+                <div class="card-main">
+                    <p class="label">畳で小さいお子様も安心</p>
+                    <div class="room-price">¥200/3h〜</div>
+                    <div class="room-type-wrapper">
+                        <div class="room-type">学習室（和室）</div>
+                    </div>
+                </div>
+                <p class="description">
+                    のんびりできる畳のお部屋。茶室は、シチュエーション撮影なんかもいいかも。
+                </p>
+            </div>
+            <div class="room-card room3">
+                <div class="card-main">
+                    <p class="label">防音仕様、全身鏡あり</p>
+                    <div class="room-price">¥1250/3h〜</div>
+                    <div class="room-type-wrapper">
+                        <div class="room-type">練習室</div>
+                    </div>
+                </div>
+                <p class="description">
+                    ダンスの練習や楽器練習に。
+                </p>
+            </div>
+            <div class="room-card room4">
+                <div class="card-main">
+                    <p class="label">広々オープンスペース</p>
+                    <div class="room-price">¥1040/3h〜</div>
+                    <div class="room-type-wrapper">
+                        <div class="room-type">展示コーナー</div>
+                    </div>
+                </div>
+                <p class="description">
+                    展示スペースに利用できます。作品発表の展示会や、パブリックビューイング開催など。
+                </p>
+            </div>
+        </div>
+        <!-- <button class="sub-button">料金シミュレーション</button> -->
+        <h3 class="price-calc">料金シミュレーション</h3>
+        <p class="text-align-center">※冷暖房費などの設備料は含まれません</p>
+        <form id="feeForm">
+            <label>施設:
+    <select id="facility">
+      <option value="大ホール">大ホール</option>
+      <option value="小ホール">小ホール</option>
+      <option value="練習室">練習室</option>
+      <option value="楽屋">楽屋</option>
+      <option value="会議室">会議室</option>
+      <!-- 必要に応じて追加 -->
+    </select>
+  </label><br>
+
+            <label>利用日:
+    <select id="dayType">
+      <option value="平日">平日</option>
+      <option value="休日">土日・祝日</option>
+    </select>
+  </label><br>
+
+            <label>入場料区分:
+    <select id="admissionType">
+      <option value="none">徴収しない</option>
+      <option value="lt1000">1,000円以下</option>
+      <option value="lt3000">1,000円～3,000円以下</option>
+      <option value="gt3000">3,000円超</option>
+    </select>
+  </label><br>
+
+            <label>時間帯:
+    <select id="timeSlot">
+      <option value="9-12">9:00～12:00</option>
+      <option value="13-17">13:00～17:00</option>
+      <option value="18-22">18:00～22:00</option>
+      <option value="9-17">9:00～17:00</option>
+      <option value="13-22">13:00～22:00</option>
+      <option value="9-22">9:00～22:00</option>
+    </select>
+  </label><br>
+
+            <label>利用目的:
+    <select id="purpose">
+      <option value="normal">通常利用</option>
+      <option value="business">営業利用</option>
+      <option value="practice">練習・準備利用</option>
+    </select>
+  </label><br>
+
+            <button type="button" onclick="calculateFee()">料金計算</button>
+        </form>
+
+        <div id="result"></div>
+
+        <script>
+            const priceTable = {
+                "大ホール": {
+                    "平日": {
+                        "none": {
+                            "9-12": 14660,
+                            "13-17": 23040,
+                            "18-22": 29330,
+                            "9-17": 37700,
+                            "13-22": 52370,
+                            "9-22": 67030
+                        },
+                        "lt1000": {
+                            "9-12": 19900,
+                            "13-17": 31420,
+                            "18-22": 37710,
+                            "9-17": 51320,
+                            "13-22": 69130,
+                            "9-22": 89030
+                        },
+                        "lt3000": {
+                            "9-12": 26190,
+                            "13-17": 39800,
+                            "18-22": 49230,
+                            "9-17": 65990,
+                            "13-22": 89030,
+                            "9-22": 115220
+                        },
+                        "gt3000": {
+                            "9-12": 30380,
+                            "13-17": 47140,
+                            "18-22": 58660,
+                            "9-17": 77520,
+                            "13-22": 105800,
+                            "9-22": 136180
+                        }
+                    },
+                    "休日": {
+                        "none": {
+                            "9-12": 17800,
+                            "13-17": 28280,
+                            "18-22": 33520,
+                            "9-17": 46080,
+                            "13-22": 61800,
+                            "9-22": 79600
+                        },
+                        "lt1000": {
+                            "9-12": 23040,
+                            "13-17": 36660,
+                            "18-22": 42950,
+                            "9-17": 59700,
+                            "13-22": 79610,
+                            "9-22": 102650
+                        },
+                        "lt3000": {
+                            "9-12": 29330,
+                            "13-17": 46090,
+                            "18-22": 54470,
+                            "9-17": 75420,
+                            "13-22": 100560,
+                            "9-22": 129890
+                        },
+                        "gt3000": {
+                            "9-12": 34570,
+                            "13-17": 55520,
+                            "18-22": 64950,
+                            "9-17": 90090,
+                            "13-22": 120470,
+                            "9-22": 155040
+                        }
+                    }
+                },
+                "小ホール": {
+                    "平日": {
+                        "none": {
+                            "9-12": 3140,
+                            "13-17": 4190,
+                            "18-22": 5230,
+                            "9-17": 7330,
+                            "13-22": 9420,
+                            "9-22": 12560
+                        },
+                        "lt1000": {
+                            "9-12": 4190,
+                            "13-17": 6280,
+                            "18-22": 8380,
+                            "9-17": 10470,
+                            "13-22": 14660,
+                            "9-22": 18850
+                        },
+                        "lt3000": {
+                            "9-12": 5230,
+                            "13-17": 7330,
+                            "18-22": 10470,
+                            "9-17": 12560,
+                            "13-22": 17800,
+                            "9-22": 23030
+                        },
+                        "gt3000": {
+                            "9-12": 6280,
+                            "13-17": 8380,
+                            "18-22": 11520,
+                            "9-17": 14660,
+                            "13-22": 19900,
+                            "9-22": 26180
+                        }
+                    },
+                    "休日": {
+                        "none": {
+                            "9-12": 4190,
+                            "13-17": 6280,
+                            "18-22": 7330,
+                            "9-17": 10470,
+                            "13-22": 13610,
+                            "9-22": 17800
+                        },
+                        "lt1000": {
+                            "9-12": 5230,
+                            "13-17": 7330,
+                            "18-22": 9420,
+                            "9-17": 12560,
+                            "13-22": 16750,
+                            "9-22": 21980
+                        },
+                        "lt3000": {
+                            "9-12": 6280,
+                            "13-17": 8380,
+                            "18-22": 10470,
+                            "9-17": 14660,
+                            "13-22": 18850,
+                            "9-22": 25130
+                        },
+                        "gt3000": {
+                            "9-12": 7330,
+                            "13-17": 9420,
+                            "18-22": 12570,
+                            "9-17": 16750,
+                            "13-22": 21990,
+                            "9-22": 29320
+                        }
+                    }
+                }
+                // その他施設の料金も追加可能
+            };
+
+
+            function calculateFee() {
+                const facility = document.getElementById("facility").value;
+                const dayType = document.getElementById("dayType").value;
+                const admission = document.getElementById("admissionType").value;
+                const timeSlot = document.getElementById("timeSlot").value;
+                const purpose = document.getElementById("purpose").value;
+
+                let baseFee = priceTable[facility] ? .[dayType] ? .[admission] ? .[timeSlot] || 0;
+
+                // 利用目的加算
+                if (purpose === "business") {
+                    baseFee *= (facility === "大ホール" ? 1.6 : 3);
+                } else if (purpose === "practice" && facility === "大ホール") {
+                    baseFee *= 0.6;
+                }
+
+                // 午後5時以降自動加算（大ホール・小ホール・ふるさと広場以外）
+                const after5Slots = ["18-22", "13-22", "9-22"];
+                if (!["大ホール", "小ホール", "ふるさと広場"].includes(facility) &&
+                    after5Slots.includes(timeSlot)) {
+                    baseFee += 5230;
+                }
+
+                document.getElementById("result").innerHTML = `料金: ${Math.floor(baseFee)}円`;
+            }
+        </script>
+    </section>
+
+    <section id="how-to-use" class="how-to-use-section">
+        <div class="section-title">
+            <h2 class="title"><small>HOW TO USE</small>利用方法</h2>
+        </div>
+
+        <div class="steps-container">
+            <div class="step step-1">
+                <div class="step-number">1</div>
+                <h3 class="step-title">Webで予約<br>（3日前まで）</h3>
+                <div class="step-icon">
+                    <img src="step1.png" alt="Web予約イラスト">
+                </div>
+                <p class="step-description">
+                    <a href="https://v2.spm-cloud.com/user/saku/" target="_blank" rel="noopener noreferrer">
+    佐久市の公共施設のWeb予約サービス
+  </a>で予約
+                </p>
+                <div class="arrow"><img src="arrow.png" alt="矢印"></div>
+            </div>
+
+            <div class="step step-2">
+                <div class="step-number">2</div>
+                <h3 class="step-title">室料支払い<br>（振込み/窓口）</h3>
+                <div class="step-icon">
+                    <img src="step2.png" alt="室料支払いイラスト">
+                </div>
+                <p class="step-description">後日、郵送で請求書が届くので、銀行振込 or 窓口支払</p>
+                <div class="arrow"><img src="arrow.png" alt="矢印"></div>
+            </div>
+
+            <div class="step step-3">
+                <div class="step-number">3</div>
+                <h3 class="step-title">利用<br>記録</h3>
+                <div class="step-icon">
+                    <img src="step3.png" alt="利用イラスト">
+                </div>
+                <p class="step-description">空調や電源などの設備利用ができ、所定の時間に記入</p>
+                <div class="arrow"><img src="arrow.png" alt="矢印"></div>
+            </div>
+
+            <div class="step step-4">
+                <div class="step-number">4</div>
+                <h3 class="step-title">設備料精算<br>退室</h3>
+                <div class="step-icon">
+                    <img src="step4.png" alt="設備料精算イラスト">
+                </div>
+                <p class="step-description">設備利用料は退室時に事務所でお支払い or 後日振込</p>
+            </div>
+        </div>
+
+        <!-- <div class="video-button">
+            <a href="#" class="main-button" onclick="alert('動画ページに遷移します'); return false;">
+                動画で詳しく見る
+            </a>
+        </div> -->
+    </section>
+
+    <section class="faq" id="faq">
+        <h2 class="title"><small>FAQ</small>よくあるご質問</h2>
+        <div class="faq-container">
+            <div class="faq-item">
+                <div class="faq-question">
+                    <div class="faq-icon">Q</div>
+                    <h3>当日予約は可能ですか？</h3>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-icon answer-icon">A</div>
+                    <p>お電話にてお問合せください。</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <div class="faq-icon">Q</div>
+                    <h3>備品の貸し出しはありますか？</h3>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-icon answer-icon">A</div>
+                    <p>机・椅子・マイク等の貸し出しがあります。詳細な備品リストは事前にお問い合わせください。</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <div class="faq-icon">Q</div>
+                    <h3>キャンセル料はかかりますか？</h3>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-icon answer-icon">A</div>
+                    <p>ホール及びホールと併せて使用する施設は、使用日の1か月前まで、それ以外の施設は8日前までのキャンセルは無料です。それを過ぎますと、50%のキャンセル料が発生いたします。</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <div class="faq-icon">Q</div>
+                    <h3>暗くできる部屋はありますか？</h3>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-icon answer-icon">A</div>
+                    <p>1階会議室には遮光カーテンがあり、暗くすることができます。プロジェクターを使用する際に便利です。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="testimonial" class="testimonials">
+        <h2 class="title"><small>EXAMPLES</small>利用の実例</h2>
+        <div class="carousel-container">
+            <div class="examples-container" id="examplesContainer">
+                <div class="example-card">
+                    <div class="example-image example1">
+                    </div>
+                    <div class="example-content">
+                        <h3>コスプレで推しの誕生日会</h3>
+                        <p class="example-tag">研修室利用</p>
+                        <p class="example-description">おやつも持ち寄って楽しい時間を過ごしていただいたようです</p>
+                    </div>
+                </div>
+
+                <div class="example-card active">
+                    <div class="example-image example2">
+                    </div>
+                    <div class="example-content">
+                        <h3>映画上映会</h3>
+                        <p class="example-tag">1階会議室利用</p>
+                        <p class="example-description">遮光カーテンで暗くして、プロジェクターを使ってスクリーン（常設）に投影</p>
+                    </div>
+                </div>
+
+                <div class="example-card">
+                    <div class="example-image example3">
+                    </div>
+                    <div class="example-content">
+                        <h3>かるた練習</h3>
+                        <p class="example-tag">学習室1・2利用</p>
+                        <p class="example-description">合わせて38畳の広々空間なので、みんなでかるたをするのにもいいですね</p>
+                    </div>
+                </div>
+
+                <!-- <div class="example-card">
+                    <div class="example-image">
+                        <div style="background:linear-gradient(45deg,#ffd700,#4ecdc4);border-radius:10px;">配信セットアップ</div>
+                    </div>
+                    <div class="example-content">
+                        <h3>ゲーム実況配信</h3>
+                        <p class="example-tag">研修室利用</p>
+                        <p class="example-description">静かな環境で集中して配信。長時間の利用でも手頃な料金で助かります！</p>
+                    </div>
+                </div>
+
+                <div class="example-card">
+                    <div class="example-image">
+                        <div style="background:linear-gradient(45deg,#4ecdc4,#ffd700);border-radius:10px;">ハンドメイド作業</div>
+                    </div>
+                    <div class="example-content">
+                        <h3>推しグッズ制作会</h3>
+                        <p class="example-tag">研修室利用</p>
+                        <p class="example-description">アクスタスタンドやチャームを手作り。広いテーブルで材料を広げて作業できました。</p>
+                    </div>
+                </div>
+
+                <div class="example-card">
+                    <div class="example-image">
+                        <div style="background:linear-gradient(45deg,#ffd700,#4ecdc4);border-radius:10px;">楽器練習風景</div>
+                    </div>
+                    <div class="example-content">
+                        <h3>アコギ弾き語り練習</h3>
+                        <p class="example-tag">練習室利用</p>
+                        <p class="example-description">推しの楽曲をカバーするために練習。防音なので時間を気にせず歌えます！</p>
+                    </div>
+                </div>
+            </div>
+             -->
+            </div>
+            <button class="nav-button prev" id="prevBtn">‹</button>
+            <button class="nav-button next" id="nextBtn">›</button>
+
+            <div class="indicators" id="indicators"></div>
+    </section>
+    <section class="access" id="access">
+        <h2 class="title"><small>ACCESS</small>アクセス</h2>
+        <div class="access-wrapper">
+            <div class="access-info">
+                <p>〒385-0029 長野県佐久市臼田字上町２３１−１</p>
+                <p>臼田I.Cから車で1分、駐車場完備</p>
+            </div>
+            <div class="map">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3220.137044046824!2d138.47529187470008!3d36.18754877242809!2m3!1f0!2f0!3f0!3m2!1i1024!2i959!4f13.1!3m3!1m2!1s0x601c3409c3f16c0b%3A0x915e2018f5ec22fd!2z5L2Q5LmF5biC44Kz44K544Oi44Ob44O844Or!5e0!3m2!1sja!2sus!4v1755395132809!5m2!1sja!2sus"
+                    width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </div>
+    </section>
+    <footer>
+        <p>&copy; 2026 佐久市コスモホール All Rights Reserved.</p>
+    </footer>
+</body>
+
+</html>
+
+<script>
+    document.querySelectorAll('.step').forEach((step, index) => {
+        step.addEventListener('click', () => {
+            // クリック時のアニメーション
+            step.style.transform = 'scale(0.95)';
+            setTimeout(() => {
+                step.style.transform = 'translateY(-10px)';
+            }, 100);
+
+            // ステップの詳細情報を表示（例）
+            console.log(`ステップ ${index + 1} がクリックされました`);
+        });
+    });
+
+
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+            }
+        });
+    }, observerOptions);
+
+    document.querySelectorAll('.step').forEach(step => {
+        step.style.opacity = '0';
+        step.style.transform = 'translateY(30px)';
+        step.style.transition = 'all 0.6s ease';
+        observer.observe(step);
+    });
+
+    // 3Dカードの回転機能
+    class Carousel {
+        constructor() {
+            this.container = document.getElementById('examplesContainer');
+            this.cards = document.querySelectorAll('.example-card');
+            this.prevBtn = document.getElementById('prevBtn');
+            this.nextBtn = document.getElementById('nextBtn');
+            this.indicatorsContainer = document.getElementById('indicators');
+
+            this.currentIndex = 1; // 真ん中から開始
+            this.totalCards = this.cards.length;
+
+            this.init();
+        }
+
+        init() {
+            this.createIndicators();
+            this.updateCarousel();
+            this.addEventListeners();
+
+            // 自動スライド（オプション）
+            this.startAutoSlide();
+        }
+
+        createIndicators() {
+            for (let i = 0; i < this.totalCards; i++) {
+                const indicator = document.createElement('div');
+                indicator.className = 'indicator';
+                indicator.addEventListener('click', () => this.goToSlide(i));
+                this.indicatorsContainer.appendChild(indicator);
+            }
+        }
+
+        updateCarousel() {
+            // カードの位置を更新
+            const translateX = -(this.currentIndex * 330); // カード幅 + gap
+            this.container.style.transform = `translateX(${translateX}px)`;
+
+            // アクティブカードを更新
+            this.cards.forEach((card, index) => {
+                card.classList.toggle('active', index === this.currentIndex);
+            });
+
+            // インジケーターを更新
+            const indicators = document.querySelectorAll('.indicator');
+            indicators.forEach((indicator, index) => {
+                indicator.classList.toggle('active', index === this.currentIndex);
+            });
+        }
+
+        goToSlide(index) {
+            this.currentIndex = index;
+            this.updateCarousel();
+            this.resetAutoSlide();
+        }
+
+        nextSlide() {
+            this.currentIndex = (this.currentIndex + 1) % this.totalCards;
+            this.updateCarousel();
+            this.resetAutoSlide();
+        }
+
+        prevSlide() {
+            this.currentIndex = (this.currentIndex - 1 + this.totalCards) % this.totalCards;
+            this.updateCarousel();
+            this.resetAutoSlide();
+        }
+
+        addEventListeners() {
+            this.nextBtn.addEventListener('click', () => this.nextSlide());
+            this.prevBtn.addEventListener('click', () => this.prevSlide());
+
+            // キーボード操作
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'ArrowLeft') this.prevSlide();
+                if (e.key === 'ArrowRight') this.nextSlide();
+            });
+
+            // タッチスワイプ
+            let startX = 0;
+            let isDragging = false;
+
+            this.container.addEventListener('touchstart', (e) => {
+                startX = e.touches[0].clientX;
+                isDragging = true;
+            });
+
+            this.container.addEventListener('touchmove', (e) => {
+                if (!isDragging) return;
+                e.preventDefault();
+            });
+
+            this.container.addEventListener('touchend', (e) => {
+                if (!isDragging) return;
+                isDragging = false;
+
+                const endX = e.changedTouches[0].clientX;
+                const diffX = startX - endX;
+
+                if (Math.abs(diffX) > 50) {
+                    if (diffX > 0) {
+                        this.nextSlide();
+                    } else {
+                        this.prevSlide();
+                    }
+                }
+            });
+        }
+
+        startAutoSlide() {
+            this.autoSlideInterval = setInterval(() => {
+                this.nextSlide();
+            }, 5000);
+        }
+
+        resetAutoSlide() {
+            clearInterval(this.autoSlideInterval);
+            this.startAutoSlide();
+        }
+    }
+
+    // カルーセルを初期化
+    document.addEventListener('DOMContentLoaded', () => {
+        new Carousel();
+    });
+</script>
+
+<style>
+    html,
+    body {
+        margin: 0;
+        padding: 0;
+    }
+    
+    html {
+        scroll-behavior: smooth;
+    }
+    
+     :root {
+        --mint: #4ecdc4;
+        --yellow: #ffd700;
+        --light-yellow: #ffed4e;
+        --pink: #FF6B6B;
+        --light-bg: #f5fcfa;
+        --text-dark: #223843;
+        --text-gray: #666;
+        --bg-white: #ffffff;
+        --border-radius: 20px;
+    }
+    
+    body {
+        margin: 0;
+        font-family: 'Noto Sans JP', sans-serif;
+        color: var(--text-dark);
+        line-height: 1.6;
+        letter-spacing: 2px;
+        padding-top: 88px;
+        background-color: var(--light-bg);
+    }
+    
+    h2 {
+        font-size: 2.5rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+        text-align: center;
+    }
+    
+    h2.title {
+        display: flex;
+        flex-direction: column;
+        color: var(--text-dark);
+        margin-top: 0;
+        margin-bottom: 3rem;
+    }
+    
+    h2 small {
+        font-size: 1.2rem;
+        color: var(--mint);
+    }
+    
+    h3 {
+        font-size: 1rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+        text-align: center;
+        margin-bottom: 2rem;
+    }
+    
+    .text-align-center {
+        text-align: center;
+    }
+    
+    @media (max-width: 959px) {
+        h2 {
+            font-size: 1.5rem;
+        }
+        h2 small {
+            font-size: 1rem;
+        }
+        h2.title {
+            margin-bottom: 2rem
+        }
+        section {
+            padding: 3rem 1rem !important;
+        }
+    }
+    /* ボタン */
+    
+    .button-wrapper {
+        display: flex;
+        justify-content: center;
+        gap: 2rem;
+    }
+    
+    .sub-button,
+    .main-button {
+        min-width: 160px;
+        height: 48px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border: none;
+        border-radius: 24px;
+        font-size: 1rem;
+        font-weight: bold;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        text-decoration: none;
+    }
+    
+    .sub-button {
+        background: var(--mint);
+        color: white;
+        box-shadow: 0 4px 8px rgba(78, 205, 196, 0.4);
+    }
+    
+    .sub-button:hover {
+        background: #45b7aa;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(78, 205, 196, 0.6);
+    }
+    
+    .main-button {
+        background: var(--yellow) !important;
+        color: var(--text-dark) !important;
+        border: 2px solid var(--text-dark) !important;
+        box-shadow: 0 4px 8px rgba(255, 215, 0, 0.4) !important;
+    }
+    
+    .main-button:hover {
+        background: var(--yellow);
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(255, 215, 0, 0.6);
+    }
+    /* ヘッダー */
+    
+    header {
+        background-color: #f4f7f8;
+        color: var(--text-dark);
+        padding: 1.5rem 2rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 88px;
+        box-sizing: border-box;
+        z-index: 1000;
+    }
+    
+    header h1 {
+        font-size: 1.5rem;
+        margin: 0;
+    }
+    
+    nav a {
+        color: var(--text-dark);
+        margin-left: 1.5rem;
+        text-decoration: none;
+        font-weight: bold;
+    }
+    
+    .top-link {
+        color: inherit;
+        /* 元の文字色を維持 */
+        text-decoration: none;
+        /* 下線を消す */
+        cursor: pointer;
+    }
+    /* ハンバーガーメニューボタン（デフォルトは非表示） */
+    
+    .hamburger {
+        display: none;
+        flex-direction: column;
+        cursor: pointer;
+        padding: 0.5rem;
+        z-index: 1001;
+    }
+    
+    .hamburger span {
+        width: 25px;
+        height: 3px;
+        background-color: #4a5568;
+        margin: 3px 0;
+        transition: 0.3s;
+        border-radius: 2px;
+    }
+    /* ハンバーガーメニューが開いている時のアニメーション */
+    
+    .hamburger.active span:nth-child(1) {
+        transform: rotate(-45deg) translate(-5px, 6px);
+    }
+    
+    .hamburger.active span:nth-child(2) {
+        opacity: 0;
+    }
+    
+    .hamburger.active span:nth-child(3) {
+        transform: rotate(45deg) translate(-5px, -6px);
+    }
+    /* モバイルメニューのオーバーレイ */
+    
+    .mobile-menu {
+        position: fixed;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100vh;
+        background: linear-gradient(135deg, rgba(16, 217, 196, 0.95), rgba(110, 231, 183, 0.95));
+        backdrop-filter: blur(10px);
+        z-index: 1000;
+        transition: left 0.3s ease;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .mobile-menu.active {
+        left: 0;
+    }
+    /* モバイルメニュー内の閉じるボタン */
+    
+    .mobile-close-button {
+        position: absolute;
+        top: 1rem;
+        right: 3rem;
+        background: none;
+        border: none;
+        color: white;
+        font-size: 2rem;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        line-height: 1;
+    }
+    
+    .mobile-close-button:hover {
+        transform: rotate(90deg);
+        opacity: 0.7;
+    }
+    
+    .mobile-menu a {
+        color: var(--text-dark);
+        text-decoration: none;
+        font-size: 1.2rem;
+        margin: 0.4rem 0;
+        padding: 0.5rem 1.5rem;
+        border-radius: 25px;
+        transition: all 0.3s ease;
+        text-align: center;
+        min-width: 200px;
+        font-weight: 500;
+        backdrop-filter: blur(20px);
+        background: var(--bg-white);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    
+    .mobile-menu a:hover {
+        background: rgba(255, 255, 255, 0.25);
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    }
+    
+    .mobile-menu .sub-button {
+        border: 2px solid rgba(255, 255, 255, 0.8);
+        color: white;
+        background: rgba(255, 255, 255, 0.1);
+    }
+    
+    .mobile-menu .sub-button:hover {
+        background: rgba(255, 255, 255, 0.9);
+        color: #059669;
+    }
+    
+    .mobile-menu .main-button {
+        background: rgba(255, 255, 255, 0.9);
+        color: #059669;
+        font-weight: 600;
+    }
+    
+    .mobile-menu .main-button:hover {
+        background: white;
+        color: #047857;
+        box-shadow: 0 8px 25px rgba(255, 255, 255, 0.3);
+    }
+    /* タブレット・スマホ対応 */
+    
+    @media (max-width: 959px) {
+        header {
+            padding: 1rem;
+        }
+        .top-link {
+            font-size: 1.2rem;
+        }
+        /* デスクトップナビを隠す */
+        nav {
+            display: none;
+        }
+        /* ハンバーガーボタンを表示 */
+        .hamburger {
+            display: flex;
+        }
+    }
+    /* より小さな画面用 */
+    
+    @media (max-width: 480px) {
+        .top-link {
+            font-size: 1rem;
+        }
+    }
+    /* ヒーローセクション */
+    
+    .hero {
+        height: auto;
+        /* 高さは任意で調整 */
+        overflow: hidden;
+        position: relative;
+        padding: 4rem 0 6rem 0;
+        text-align: center;
+        background: linear-gradient(to bottom, white 0%, var(--light-bg) 100%);
+    }
+    
+    .hero p {
+        font-size: 1.2rem;
+        margin-bottom: 2rem;
+    }
+    
+    .slider-wrapper {
+        width: 100%;
+        overflow: hidden;
+        position: relative;
+    }
+    
+    .slider-track {
+        display: flex;
+        width: 200%;
+        /* 画像10枚 × 2セット分 */
+        animation: scroll 30s linear infinite;
+    }
+    
+    .slider-track img {
+        height: 300px;
+        flex-shrink: 0;
+        object-fit: cover;
+        margin-right: 40px;
+        flex-shrink: 0;
+        border-radius: var(--border-radius);
+    }
+    /* 最後の画像の右マージンをなくす */
+    
+    .slider-track img:last-child {
+        margin-right: 0;
+    }
+    
+    .slider-track img:nth-child(1) {
+        margin-top: 0px;
+    }
+    
+    .slider-track img:nth-child(2) {
+        margin-top: 10px;
+    }
+    
+    .slider-track img:nth-child(3) {
+        margin-top: -8px;
+    }
+    
+    .slider-track img:nth-child(4) {
+        margin-top: 12px;
+    }
+    
+    .slider-track img:nth-child(5) {
+        margin-top: -5px;
+    }
+    
+    .slider-track img:nth-child(6) {
+        margin-top: 6px;
+    }
+    /* 2周目（11〜20枚目）もずらす */
+    
+    .slider-track img:nth-child(7) {
+        margin-top: 0px;
+    }
+    
+    .slider-track img:nth-child(8) {
+        margin-top: 10px;
+    }
+    
+    .slider-track img:nth-child(9) {
+        margin-top: -8px;
+    }
+    
+    .slider-track img:nth-child(10) {
+        margin-top: 12px;
+    }
+    
+    .slider-track img:nth-child(11) {
+        margin-top: -5px;
+    }
+    
+    .slider-track img:nth-child(12) {
+        margin-top: 6px;
+    }
+    /* アニメーション定義 */
+    
+    @keyframes scroll {
+        0% {
+            transform: translateX(0);
+        }
+        100% {
+            transform: translateX(-50%);
+        }
+    }
+    
+    @media (max-width: 959px) {
+        .hero p {
+            font-size: 1rem;
+            padding: 0 1rem;
+        }
+    }
+    
+    .pain-points {
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 2rem;
+        padding: 6rem 3rem;
+        background-color: var(--mint);
+        justify-items: center;
+        box-sizing: border-box;
+        border-bottom-left-radius: 50% 5vw;
+        border-bottom-right-radius: 50% 5vw;
+    }
+    
+    .pain-points h3 {
+        text-align: center;
+        margin-bottom: 0 !important;
+    }
+    
+    .pain-point {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-color: white;
+        width: 100%;
+        border-radius: var(--border-radius);
+    }
+    
+    .pain-point-image {
+        height: 200px;
+        width: 100%;
+        max-width: 280px;
+    }
+    
+    .pain-point img {
+        width: 100%;
+        height: 100%;
+        margin-bottom: 1rem;
+        object-fit: contain;
+        display: block;
+    }
+    
+    @media screen and (max-width: 959px) {
+        .slider-track img {
+            height: 150px;
+            margin-right: 20px;
+        }
+    }
+    /* 価格セクション */
+    
+    .angled-lines {
+        position: relative;
+        display: inline-block;
+        padding: 0 1.5rem;
+        font-weight: bold;
+        font-size: 1.2rem;
+        color: #333;
+    }
+    
+    .angled-lines::before,
+    .angled-lines::after {
+        content: '';
+        position: absolute;
+        top: 54%;
+        width: 20px;
+        height: 2px;
+        background: #333;
+    }
+    
+    .angled-lines::before {
+        left: 0;
+        transform: translateY(-50%) rotate(45deg);
+    }
+    
+    .angled-lines::after {
+        right: 0;
+        transform: translateY(-50%) rotate(-45deg);
+    }
+    
+    .price {
+        background-color: var(--light-bg);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-color: var(--light-bg);
+        padding: 6rem 3rem;
+    }
+    
+    .price p {
+        text-align: center;
+    }
+    /* Room Section */
+    
+    .room-section {
+        padding: 6rem 3rem;
+        position: relative;
+        overflow: hidden;
+        background-color: var(--bg-white);
+    }
+    
+    .room-section::before {
+        content: '';
+        position: absolute;
+        top: -100px;
+        right: -100px;
+        width: 200px;
+        height: 200px;
+        background: radial-gradient(circle, rgba(78, 205, 196, 0.1) 0%, transparent 70%);
+        border-radius: 50%;
+        animation: float 6s ease-in-out infinite;
+    }
+    
+    @keyframes float {
+        0%,
+        100% {
+            transform: translateY(0px) scale(1);
+        }
+        50% {
+            transform: translateY(-20px) scale(1.05);
+        }
+    }
+    
+    .room-cards {
+        display: flex;
+        overflow-x: auto;
+        /* 横スクロール可能に */
+        padding-bottom: 1rem;
+        /* スクロールバーの余白確保 */
+        scroll-snap-type: x mandatory;
+        /* スクロールをカード単位で止める */
+        gap: 2.5rem;
+        margin-top: 2rem;
+        margin-bottom: 3rem;
+        position: relative;
+        z-index: 2;
+    }
+    
+    .room-card {
+        flex: 0 0 325px;
+        /* カードの横幅固定 */
+        scroll-snap-align: start;
+        /* スクロール停止位置 */
+        background: var(--bg-white);
+        border-radius: 25px;
+        overflow: hidden;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+        transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        border: 3px solid transparent;
+        position: relative;
+        cursor: pointer;
+    }
+    
+    .room-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        border-radius: 25px;
+        padding: 3px;
+        mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+        mask-composite: xor;
+        opacity: 0;
+        transition: opacity 0.4s ease;
+    }
+    
+    .room-card:hover::before {
+        opacity: 1;
+    }
+    
+    .room-card:hover {
+        transform: translateY(-15px) scale(1.02);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    }
+    
+    .card-main {
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        aspect-ratio: 5/4;
+        position: relative;
+        padding: 2rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        overflow: hidden;
+        transition: all 0.4s ease;
+    }
+    /* デフォルトはグラデーション背景 */
+    
+    .card-main {
+        background: linear-gradient(135deg, #66d4c7 0%, #4ecdc4 50%, #ffe55c 100%);
+    }
+    /* ホバー時に背景画像を表示 */
+    
+    .room1:hover .card-main {
+        background-image: linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, rgba(78, 205, 196, 0.1) 50%, rgba(255, 229, 92, 0.1) 100%), url('img_kensyuu.png');
+        background-repeat: no-repeat;
+        /* 繰り返さない */
+        background-size: cover;
+        /* 枠いっぱいに拡大縮小 */
+        background-position: center;
+        /* 中央に配置 */
+    }
+    
+    .room2:hover .card-main {
+        background-image: linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, rgba(78, 205, 196, 0.1) 50%, rgba(255, 229, 92, 0.1) 100%), url('img_gakushu.jpg');
+        background-repeat: no-repeat;
+        /* 繰り返さない */
+        background-size: cover;
+        /* 枠いっぱいに拡大縮小 */
+        background-position: center;
+        /* 中央に配置 */
+    }
+    
+    .room3:hover .card-main {
+        background-image: linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, rgba(91, 209, 199, 0.1) 50%, rgba(255, 234, 127, 0.1) 100%), url('img_rensyuu.png');
+        background-repeat: no-repeat;
+        /* 繰り返さない */
+        background-size: cover;
+        /* 枠いっぱいに拡大縮小 */
+        background-position: center;
+        /* 中央に配置 */
+    }
+    
+    .card-main::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: transparent;
+        z-index: 1;
+        transition: all 0.4s ease;
+    }
+    /* ホバー時は軽いオーバーレイのみ */
+    
+    .room-card:hover .card-main::before {
+        background: rgba(0, 0, 0, 0.1);
+    }
+    
+    @keyframes shimmer {
+        0%,
+        100% {
+            transform: translate(0, 0) scale(1);
+            opacity: 0.3;
+        }
+        50% {
+            transform: translate(-20px, -20px) scale(1.1);
+            opacity: 0.1;
+        }
+    }
+    
+    .label {
+        background: var(--yellow);
+        color: var(--text-dark);
+        padding: 0.3rem 1.5rem;
+        border-radius: 25px;
+        font-weight: bold;
+        font-size: 0.9rem;
+        transform: rotate(-3deg);
+        display: inline-block;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        border: 2px solid rgba(255, 255, 255, 0.3);
+        transition: transform 0.3s ease;
+        position: relative;
+        z-index: 3;
+        max-width: fit-content;
+    }
+    
+    .room-card:hover .label {
+        transform: rotate(-3deg) scale(1.05);
+        background: rgba(255, 215, 0, 0.95);
+    }
+    
+    .room-price {
+        font-size: 2.2rem;
+        font-weight: 900;
+        color: white;
+        text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
+        text-align: right;
+        position: relative;
+        z-index: 3;
+        margin: 1rem 0;
+        transition: all 0.3s ease;
+    }
+    
+    .room-card:hover .room-price {
+        text-shadow: 2px 2px 12px rgba(0, 0, 0, 0.8);
+        transform: scale(1.05);
+    }
+    
+    .room-price::before {
+        content: '';
+        position: absolute;
+        bottom: -5px;
+        right: 0;
+        width: 100%;
+        height: 3px;
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.6));
+        border-radius: 2px;
+    }
+    
+    .room-type-wrapper {
+        text-align: right;
+        position: relative;
+        z-index: 3;
+    }
+    
+    .room-type {
+        background: rgba(255, 255, 255, 0.95);
+        color: var(--text-dark);
+        padding: 0.3rem 1.5rem;
+        border-radius: 25px;
+        font-weight: bold;
+        font-size: 1.1rem;
+        display: inline-block;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        border: 2px solid rgba(78, 205, 196, 0.3);
+        transition: all 0.3s ease;
+    }
+    
+    .room-card:hover .room-type {
+        background: rgba(255, 255, 255, 0.98);
+        transform: scale(1.05);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+    
+    .description {
+        padding: 2rem;
+        color: var(--text-gray);
+        line-height: 1.7;
+        font-size: 1rem;
+        background: linear-gradient(135deg, rgba(78, 205, 196, 0.02), rgba(255, 215, 0, 0.02));
+        position: relative;
+        transition: all 0.3s ease;
+    }
+    
+    .room-card:hover .description {
+        background: linear-gradient(135deg, rgba(78, 205, 196, 0.05), rgba(255, 215, 0, 0.05));
+    }
+    
+    .description::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 2rem;
+        right: 2rem;
+        height: 1px;
+        background: linear-gradient(90deg, transparent, var(--mint), transparent);
+        opacity: 0.3;
+    }
+    /* レスポンシブ対応 */
+    
+    @media (max-width: 959px) {
+        .room-cards {
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+        .room-price {
+            font-size: 1.8rem;
+        }
+    }
+    
+    .room-section .sub-button {
+        padding: 16px 24px;
+    }
+    /* 料金計算フォームセクション */
+    
+    h3.price-calc {
+        margin-bottom: 0;
+    }
+    
+    .pricing-calculator {
+        background: linear-gradient(135deg, #f8fdfb 0%, #f0f9f5 100%);
+        padding: 60px 20px;
+        position: relative;
+    }
+    
+    .prcing-calculator::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 2px;
+        background: linear-gradient(90deg, transparent, #7dd3c0, transparent);
+    }
+    /* フォーム全体のスタイル */
+    
+    #feeForm {
+        max-width: 700px;
+        margin: 0 auto;
+        background: white;
+        padding: 40px;
+        border-radius: 20px;
+        box-shadow: 0 10px 30px rgba(125, 211, 192, 0.08), 0 5px 15px rgba(125, 211, 192, 0.05);
+        border: 1px solid rgba(125, 211, 192, 0.1);
+        position: relative;
+        overflow: hidden;
+        background-color: #f6f6f6;
+    }
+    /* ラベル共通スタイル */
+    
+    #feeForm label {
+        display: grid;
+        grid-template-columns: 96px auto;
+        align-items: center;
+        text-align: right;
+        font-size: 1rem;
+        font-weight: 500;
+        margin-bottom: 20px;
+        letter-spacing: 0.02em;
+        line-height: 1.6;
+        gap: 16px;
+    }
+    /* セレクトボックス共通スタイル */
+    
+    #feeForm select {
+        margin-left: 10px;
+        padding: 10px 35px 10px 15px;
+        border: 2px solid #e0ede8;
+        border-radius: 10px;
+        background: white;
+        font-size: 0.95rem;
+        color: #2d5a4a;
+        min-width: 180px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        appearance: none;
+        background-image: linear-gradient(45deg, transparent 50%, #7dd3c0 50%), linear-gradient(135deg, #7dd3c0 50%, transparent 50%);
+        background-position: calc(100% - 18px) calc(1em + 2px), calc(100% - 13px) calc(1em + 2px);
+        background-size: 5px 5px, 5px 5px;
+        background-repeat: no-repeat;
+    }
+    
+    #feeForm select:focus {
+        outline: none;
+        border-color: #7dd3c0;
+        box-shadow: 0 0 0 3px rgba(125, 211, 192, 0.1), 0 5px 15px rgba(125, 211, 192, 0.1);
+        transform: translateY(-1px);
+    }
+    
+    #Form select:hover {
+        border-color: #a8e6d4;
+        background-color: #fafcfb;
+    }
+    /* 個別セレクトボックスの背景色 */
+    
+    facility {
+        background-color: #f8fdf9;
+    }
+    
+    Type {
+        background-color: #f9fcfa;
+    }
+    
+    admissionType {
+        background-color: #f7fcf8;
+    }
+    
+    timeSlot {
+        background-color: #f6fbf7;
+    }
+    
+    #purpose {
+        background-color: #f5faf6;
+    }
+    /* チェックボックスのスタイル */
+    
+    #feeForm input[type="checkbox"] {
+        margin-left: 10px;
+        width: 18px;
+        height: 18px;
+        appearance: none;
+        border: 2px solid #e0ede8;
+        border-radius: 4px;
+        background: white;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        position: relative;
+        vertical-align: middle;
+    }
+    
+    #feeForm input[type="checkbox"]:hover {
+        border-color: #7dd3c0;
+        background-color: #fafcfb;
+    }
+    
+    #feForm input[type="checkbox"]:checked {
+        background: linear-gradient(135deg, #7dd3c0, #5fb8a5);
+        border-color: #7dd3c0;
+    }
+    
+    #feeForm input[type="checkbox"]:checked::after {
+        content: '✓';
+        position: absolute;
+        top: -2px;
+        left: 2px;
+        color: white;
+        font-size: 14px;
+        font-weight: bold;
+    }
+    
+    #feeForm input[type="checkbox"]:focus {
+        outline: none;
+        box-shadow: 0 0 0 3px rgba(125, 211, 192, 0.2);
+    }
+    /* 数値入力フィールド */
+    
+    #feeForm input[type="number"] {
+        margin-left: 10px;
+        padding: 10px 15px;
+        border: 2px solid #e0ede8;
+        border-radius: 10px;
+        background: #f9fcfa;
+        font-size: 0.95rem;
+        color: #2d5a4a;
+        width: 80px;
+        transition: all 0.3s ease;
+    }
+    
+    #feeForm input[type="number"]:focus {
+        outline: none;
+        border-color: #7dd3c0;
+        box-shadow: 0 0 0 3px rgba(125, 211, 192, 0.1), 0 5px 15px rgba(125, 211, 192, 0.1);
+        transform: translateY(-1px);
+    }
+    
+    #feeForm input[type="number"]:hover {
+        border-color: #a8e6d4;
+    }
+    /* 料金計算ボタン */
+    
+    #feeForm button {
+        background: linear-gradient(135deg, #7dd3c0, #5fb8a5);
+        color: white;
+        border: none;
+        padding: 16px 40px;
+        border-radius: 25px;
+        font-size: 1.1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        display: block;
+        margin: 30px auto 0;
+        letter-spacing: 0.05em;
+        box-shadow: 0 4px 15px rgba(125, 211, 192, 0.2);
+    }
+    
+    #Form button:hover {
+        background: linear-gradient(135deg, #5fb8a5, #4a9d8a);
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(125, 211, 192, 0.3);
+    }
+    
+    Form button:active {
+        transform: translateY(0);
+    }
+    /* 結果表示エリア */
+    
+    #result {
+        max-width: 700px;
+        margin: 20px auto 0;
+        text-align: center;
+        padding: 30px;
+        background: linear-gradient(135deg, #f0f9f5, #e8f5f0);
+        border-radius: 15px;
+        border: 2px solid #7dd3c0;
+        position: relative;
+        overflow: hidden;
+        font-size: 2rem;
+        font-weight: 700;
+        color: #7dd3c0;
+        text-shadow: 0 2px 4px rgba(125, 211, 192, 0.1);
+        min-height: 60px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    #result::before {
+        content: '';
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: radial-gradient(circle, rgba(125, 211, 192, 0.03) 0%, transparent 70%);
+        animation: shimmer 3s ease-in-out infinite;
+    }
+    
+    @keyframes shimmer {
+        0%,
+        100% {
+            transform: rotate(0deg);
+        }
+        50% {
+            transform: rotate(180deg);
+        }
+    }
+    
+    #result:empty::after {
+        content: '料金を計算してください';
+        font-size: 1.2rem;
+        color: #7a9a8a;
+        font-weight: 400;
+    }
+    /* レスポンシブ対応 */
+    
+    @media (max-width: 959px) {
+        pricing-calculator {
+            padding: 40px 15px;
+        }
+        #feeForm {
+            padding: 30px 20px;
+        }
+        #feeForm select,
+        #feForm input[type="number"] {
+            margin-left: 0;
+            margin-top: 8px;
+            width: 100%;
+            max-width: 300px;
+        }
+        #feeForm input[type="checkbox"] {
+            margin-left: 0;
+            margin-top: 8px;
+        }
+        #feeForm label {
+            margin-bottom: 0;
+        }
+        #result {
+            font-size: 1.8rem;
+            padding: 25px 15px;
+        }
+    }
+    
+    @media (max-width: 480px) {
+        .pricing-calculator {
+            padding: 30px 10px;
+        }
+        #feeForm {
+            padding: 25px 15px;
+        }
+        #feeForm button {
+            width: 100%;
+            padding: 14px 20px;
+        }
+        #result {
+            font-size: 1.5rem;
+            margin-top: 15px;
+        }
+    }
+    /* How to Use Section */
+    
+    .how-to-use-section {
+        background: var(--light-bg);
+        border: var(--border-dashed);
+        border-radius: var(--border-radius);
+        padding: 6rem 3rem;
+        position: relative;
+    }
+    
+    .steps-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 3rem;
+        margin-bottom: 3rem;
+    }
+    
+    .step {
+        text-align: center;
+        position: relative;
+        transition: transform 0.3s ease;
+        padding: 1rem;
+    }
+    
+    .step:hover {
+        transform: translateY(-10px);
+    }
+    
+    .step-number {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 1.8rem;
+        font-weight: bold;
+        margin-bottom: 1.5rem;
+        position: relative;
+        z-index: 1;
+    }
+    
+    .step-number::before {
+        content: "";
+        display: block;
+        background-color: var(--mint);
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        z-index: 0;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: -1;
+    }
+    
+    .step:hover .step-number {
+        background: #45b7aa;
+        transform: scale(1.1);
+    }
+    
+    .step-title {
+        font-size: 1.4rem;
+        font-weight: bold;
+        color: var(--mint);
+        margin-bottom: 2rem;
+        margin-top: 0;
+    }
+    
+    .step-icon {
+        width: 180px;
+        height: auto;
+        margin: 0 auto 1.5rem;
+        padding: 1.5rem;
+        background: white;
+        border-radius: 50%;
+    }
+    
+    .step-icon img {
+        width: 100%;
+        transition: transform 0.3s ease;
+    }
+    
+    .p:hover .step-icon img {
+        transform: scale(1.1);
+    }
+    
+    .step-description {
+        font-size: 1rem;
+        color: var(--text-gray);
+        line-height: 1.6;
+        max-width: 220px;
+        margin: 0 auto;
+    }
+    
+    .arrow {
+        position: absolute;
+        right: -30px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: var(--mint);
+        font-size: 2rem;
+        opacity: 0.7;
+        width: 20px;
+        height: 20px;
+    }
+    
+    .arrow img {
+        width: 100%;
+        height: 100%;
+        display: block;
+    }
+    
+    .step:last-child .arrow {
+        display: none;
+    }
+    
+    .video-button {
+        text-align: center;
+        margin-top: 3rem;
+    }
+    
+    .video-btn {
+        display: inline-block;
+        background: var(--yellow);
+        color: var(--text-dark);
+        padding: 1rem 3rem;
+        border: 3px dashed var(--text-dark);
+        border-radius: 15px;
+        text-decoration: none;
+        font-weight: bold;
+        font-size: 1.2rem;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .vieo-btn::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+        transition: left 0.5s;
+    }
+    
+    .video-btn:hover::before {
+        left: 100%;
+    }
+    
+    eo-btn:hover {
+        background: var(--light-yellow);
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(255, 215, 0, 0.4);
+    }
+    
+    @media (max-width: 959px) {
+        .step-number {
+            font-size: 1.5rem;
+        }
+        .step-number::before {
+            width: 48px;
+            height: 48px;
+        }
+        .step-title {
+            font-size: 1.2rem;
+        }
+        .steps-container {
+            grid-template-columns: 1fr;
+            gap: 30px;
+        }
+        .arrow {
+            display: none;
+        }
+        .step-icon {
+            width: 240px;
+            height: 240px;
+        }
+    }
+    /* FAQ Section */
+    
+    .faq {
+        background: white;
+        border: var(--border-dashed);
+        border-radius: var(--border-radius);
+        padding: 6rem 3rem;
+    }
+    
+    .faq-container {
+        max-width: 800px;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+    }
+    
+    .faq-item {
+        background: var(--bg-white);
+        border-radius: 15px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+        border: 2px solid transparent;
+        transition: all 0.3s ease;
+    }
+    
+    .faq-item:hover {
+        border-color: var(--mint);
+        transform: translateY(-5px);
+        box-shadow: 0 4px 8px rgba(78, 205, 196, 0.2);
+    }
+    
+    .faq-question {
+        background: linear-gradient(135deg, var(--mint), #45b7aa);
+        color: white;
+        padding: 1.5rem 2rem;
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        cursor: pointer;
+    }
+    
+    .faq-question h3 {
+        font-size: 1.2rem;
+        font-weight: bold;
+        margin: 0;
+    }
+    
+    .faq-answer {
+        background: var(--bg-white);
+        padding: 2rem;
+        display: flex;
+        align-items: flex-start;
+        gap: 1rem;
+        border-top: 2px solid var(--mint);
+    }
+    
+    .faq-answer p {
+        margin: 0;
+        line-height: 1.6;
+        color: var(--text-gray);
+    }
+    
+    .faq-icon {
+        width: 40px;
+        height: 40px;
+        background: rgba(255, 255, 255, 0.2);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+        font-size: 1.2rem;
+        flex-shrink: 0;
+    }
+    
+    .answer-icon {
+        background: var(--yellow);
+        color: var(--text-dark);
+        box-shadow: 0 4px 8px rgba(255, 215, 0, 0.3);
+    }
+    
+    .testimonials {
+        background-color: var(--light-bg);
+        padding: 6rem 3rem;
+    }
+    
+    .carousel-container {
+        position: relative;
+        overflow: hidden;
+        padding: 40px 0;
+    }
+    
+    .examples-container {
+        display: flex;
+        transition: transform 0.5s ease-in-out;
+        gap: 30px;
+        padding: 0 50px;
+    }
+    
+    .example-card {
+        flex: 0 0 300px;
+        background: white;
+        border-radius: 20px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        overflow: hidden;
+        transition: all 0.3s ease;
+        transform: scale(0.8);
+        opacity: 0.6;
+    }
+    
+    .example-card.active {
+        transform: scale(1);
+        opacity: 1;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    }
+    
+    .example-image {
+        width: 100%;
+        height: 200px;
+        overflow: hidden;
+    }
+    
+    .example1 {
+        background: url('example1.png') center/cover no-repeat;
+    }
+    
+    .example2 {
+        background: url('example2.png') center/cover no-repeat;
+    }
+    
+    .exmple3 {
+        background: url('example3.jpg') center/cover no-repeat;
+    }
+    
+    .example-image div {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+        font-size: 1rem;
+        color: white;
+        transition: transform 0.3s ease;
+    }
+    
+    .exmple-card:hover .example-image div {
+        transform: scale(1.1);
+    }
+    
+    .example-content {
+        padding: 25px;
+    }
+    
+    .example-content h3 {
+        font-size: 1.3rem;
+        color: #333;
+        margin-bottom: 10px;
+        font-weight: bold;
+    }
+    
+    .example-tag {
+        display: inline-block;
+        background: linear-gradient(45deg, #4ecdc4, #ffd700);
+        color: white;
+        padding: 5px 12px;
+        border-radius: 15px;
+        font-size: 0.8rem;
+        font-weight: bold;
+        margin-bottom: 15px;
+    }
+    
+    .example-description {
+        color: #666;
+        line-height: 1.6;
+        font-size: 0.95rem;
+    }
+    
+    .nav-button {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 50px;
+        height: 50px;
+        background: white;
+        border: none;
+        border-radius: 50%;
+        cursor: pointer;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        color: var(--mint);
+        transition: all 0.3s ease;
+        z-index: 10;
+    }
+    
+    .nav-button:hover {
+        background: var(--mint);
+        color: white;
+        transform: translateY(-50%) scale(1.1);
+    }
+    
+    .prev {
+        left: 10px;
+    }
+    
+    .next {
+        right: 10px;
+    }
+    
+    .indicators {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        margin-top: 30px;
+    }
+    
+    .inicator {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.3);
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+    
+    .indicator.active {
+        background: white;
+        transform: scale(1.2);
+    }
+    
+    @media (max-width: 959px) {
+        .exmples-container {
+            padding: 0 20px;
+            gap: 20px;
+        }
+        mple-card {
+            flex: 0 0 250px;
+        }
+        .n-button {
+            width: 40px;
+            height: 40px;
+            font-size: 1.2rem;
+        }
+    }
+    /* アクセス */
+    
+    .access {
+        padding: 6rem 3rem;
+        position: relative;
+        background-color: var(--bg-white);
+    }
+    
+    .access-wrapper {
+        display: flex;
+    }
+    
+    .access-info {
+        width: 50%;
+    }
+    
+    .map {
+        width: 50%;
+        min-height: 300px;
+    }
+    /* フッター */
+    
+    footer {
+        background-color: var(--text-dark);
+        color: white;
+        text-align: center;
+        padding: 2rem 1rem;
+    }
+</style>
