@@ -403,7 +403,7 @@
                 const timeSlot = document.getElementById("timeSlot").value;
                 const purpose = document.getElementById("purpose").value;
 
-                let baseFee = priceTable[facility] ? .[dayType] ? .[admission] ? .[timeSlot] || 0;
+                let baseFee = priceTable[facility]?.[dayType]?.[admission]?.[timeSlot] || 0;
 
                 // 利用目的加算
                 if (purpose === "business") {
@@ -2317,4 +2317,5 @@
         padding: 2rem 1rem;
     }
 </style>
+
 
