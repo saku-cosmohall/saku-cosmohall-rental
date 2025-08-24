@@ -418,18 +418,33 @@
             
             // 利用日・入場料区分を施設に応じて切り替え
 function toggleOptions() {
-  const facility = document.getElementById("facility").value;
-  const dayType = document.getElementById("dayType");
-  const admissionType = document.getElementById("admissionType");
+    const facility = document.getElementById("facility").value;
+    const dayType = document.getElementById("dayType");
+    const admissionType = document.getElementById("admissionType");
+    const purpose = document.getElementById("purpose");
+    const practiceOption = purpose.querySelector('option[value="practice"]');
 
-  if (["大ホール","小ホール"].includes(facility)) {
-    dayType.disabled = false;
-    admissionType.disabled = false;
-  } else {
-    dayType.disabled = true;
-    admissionType.disabled = true;
-    admissionType.value = "none"; // 自動で徴収なしに設定
-  }
+    if (["大ホール","小ホール"].includes(facility)) {
+        // 大ホール・小ホールの場合
+        dayType.disabled = false;
+        admissionType.disabled = false;
+        practiceOption.disabled = false;
+        practiceOption.style.color = "";
+    } else {
+        // その他の施設の場合
+        dayType.disabled = true;
+        admissionType.disabled = true;
+        admissionType.value = "none"; // 自動で徴収なしに設定
+        
+        // 練習・準備利用をグレーアウト
+        practiceOption.disabled = true;
+        practiceOption.style.color = "#999";
+        
+        // もし現在練習・準備利用が選択されていたら通常利用に変更
+        if (purpose.value === "practice") {
+            purpose.value = "normal";
+        }
+    }
 }
 
 
@@ -933,6 +948,9 @@ function toggleOptions() {
             -moz-appearance: none;
             appearance: none;
         }
+    option:disabled {
+    color: #999;
+    }
     
     @media (max-width: 959px) {
         h2 {
@@ -1739,19 +1757,19 @@ function toggleOptions() {
     }
     /* 個別セレクトボックスの背景色 */
     
-    facility {
+    #facility {
         background-color: #f8fdf9;
     }
     
-    Type {
+    #Type {
         background-color: #f9fcfa;
     }
-    
-    admissionType {
+
+    #admissionType {
         background-color: #f7fcf8;
     }
-    
-    timeSlot {
+
+    #timeSlot {
         background-color: #f6fbf7;
     }
     
