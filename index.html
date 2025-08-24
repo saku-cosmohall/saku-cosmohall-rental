@@ -254,8 +254,9 @@
       <option value="practice">練習・準備利用</option>
     </select>
   </label><br>
-
-            <button type="button" onclick="calculateFee()">料金計算</button>
+  <div class="button-wrapper">
+            <button type="button" class="sub-button" onclick="calculateFee()">料金計算</button>
+  </div>
         </form>
 
         <div id="result"></div>
@@ -1821,34 +1822,6 @@ function toggleOptions() {
     #feeForm input[type="number"]:hover {
         border-color: #a8e6d4;
     }
-    /* 料金計算ボタン */
-    
-    #feeForm button {
-        background: linear-gradient(135deg, #7dd3c0, #5fb8a5);
-        color: white;
-        border: none;
-        height: 48px;
-        padding: 0 24px;
-        border-radius: 25px;
-        font-size: 1.1rem;
-        font-weight: 600;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        display: block;
-        margin: 30px auto 0;
-        letter-spacing: 0.05em;
-        box-shadow: 0 4px 15px rgba(125, 211, 192, 0.2);
-    }
-    
-    #Form button:hover {
-        background: linear-gradient(135deg, #5fb8a5, #4a9d8a);
-        transform: translateY(-2px);
-        box-shadow: 0 6px 20px rgba(125, 211, 192, 0.3);
-    }
-    
-    Form button:active {
-        transform: translateY(0);
-    }
     /* 結果表示エリア */
     
     #result {
@@ -1880,7 +1853,7 @@ function toggleOptions() {
     /* レスポンシブ対応 */
     
     @media (max-width: 959px) {
-        pricing-calculator {
+        .pricing-calculator {
             padding: 40px 15px;
         }
         #feeForm {
@@ -1912,10 +1885,6 @@ function toggleOptions() {
         }
         #feeForm {
             padding: 25px 15px;
-        }
-        #feeForm button {
-            width: 100%;
-            padding: 14px 20px;
         }
         #result {
             font-size: 1.5rem;
