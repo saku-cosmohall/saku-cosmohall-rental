@@ -568,6 +568,7 @@ function toggleOptions() {
             </div>
         </div>
     </section>
+    <!-- 利用の実例セクション -->
     <section id="testimonial" class="testimonials">
         <h2 class="title"><small>EXAMPLES</small>利用の実例</h2>
         <div class="carousel-container">
@@ -670,9 +671,6 @@ function toggleOptions() {
             setTimeout(() => {
                 step.style.transform = 'translateY(-10px)';
             }, 100);
-
-            // ステップの詳細情報を表示（例）
-            console.log(`ステップ ${index + 1} がクリックされました`);
         });
     });
 
@@ -699,132 +697,168 @@ function toggleOptions() {
     });
 
     // 3Dカードの回転機能
-    class Carousel {
-        constructor() {
-            this.container = document.getElementById('examplesContainer');
-            this.cards = document.querySelectorAll('.example-card');
-            this.prevBtn = document.getElementById('prevBtn');
-            this.nextBtn = document.getElementById('nextBtn');
-            this.indicatorsContainer = document.getElementById('indicators');
+        class Carousel {
+            constructor() {
+                this.container = document.getElementById('examplesContainer');
+                this.cards = document.querySelectorAll('.example-card');
+                this.prevBtn = document.getElementById('prevBtn');
+                this.nextBtn = document.getElementById('nextBtn');
+                this.indicatorsContainer = document.getElementById('indicators');
 
-            this.currentIndex = 1; // 真ん中から開始
-            this.totalCards = this.cards.length;
+                this.currentIndex = 1; // 真ん中から開始
+                this.totalCards = this.cards.length;
 
-            this.init();
-        }
+                this.init();
+                this.setupResizeListener();
+            }
 
-        init() {
-            this.createIndicators();
-            this.updateCarousel();
-            this.addEventListeners();
+            init() {
+                this.createIndicators();
+                this.updateCarousel();
+                this.addEventListeners();
+                this.startAutoSlide();
+            }
 
-            // 自動スライド（オプション）
-            this.startAutoSlide();
-        }
+            // 画面サイズに応じてカードのオフセットを計算
+            calculateOffset() {
+                const containerWidth = this.container.parentElement.clientWidth;
+                const cardWidth = this.getCardWidth();
+                const gap = this.getGap();
+                
+                // 画面中央にアクティブカードを配置するための計算
+                const centerOffset = containerWidth / 2 - cardWidth / 2;
+                const cardOffset = this.currentIndex * (cardWidth + gap);
+                
+                return centerOffset - cardOffset;
+            }
 
-        createIndicators() {
-            for (let i = 0; i < this.totalCards; i++) {
-                const indicator = document.createElement('div');
-                indicator.className = 'indicator';
-                indicator.addEventListener('click', () => this.goToSlide(i));
-                this.indicatorsContainer.appendChild(indicator);
+            // 現在の画面サイズに応じたカード幅を取得
+            getCardWidth() {
+                if (window.innerWidth <= 480) return 260;
+                if (window.innerWidth <= 768) return 280;
+                return 300;
+            }
+
+            // 現在の画面サイズに応じたギャップを取得
+            getGap() {
+                if (window.innerWidth <= 480) return 15;
+                if (window.innerWidth <= 768) return 20;
+                return 30;
+            }
+
+            createIndicators() {
+                for (let i = 0; i < this.totalCards; i++) {
+                    const indicator = document.createElement('div');
+                    indicator.className = 'indicator';
+                    indicator.addEventListener('click', () => this.goToSlide(i));
+                    this.indicatorsContainer.appendChild(indicator);
+                }
+            }
+
+            updateCarousel() {
+                // レスポンシブに対応した位置計算
+                const translateX = this.calculateOffset();
+                this.container.style.transform = `translateX(${translateX}px)`;
+
+                // アクティブカードを更新
+                this.cards.forEach((card, index) => {
+                    card.classList.toggle('active', index === this.currentIndex);
+                });
+
+                // インジケーターを更新
+                const indicators = document.querySelectorAll('.indicator');
+                indicators.forEach((indicator, index) => {
+                    indicator.classList.toggle('active', index === this.currentIndex);
+                });
+            }
+
+            goToSlide(index) {
+                this.currentIndex = index;
+                this.updateCarousel();
+                this.resetAutoSlide();
+            }
+
+            nextSlide() {
+                this.currentIndex = (this.currentIndex + 1) % this.totalCards;
+                this.updateCarousel();
+                this.resetAutoSlide();
+            }
+
+            prevSlide() {
+                this.currentIndex = (this.currentIndex - 1 + this.totalCards) % this.totalCards;
+                this.updateCarousel();
+                this.resetAutoSlide();
+            }
+
+            addEventListeners() {
+                this.nextBtn.addEventListener('click', () => this.nextSlide());
+                this.prevBtn.addEventListener('click', () => this.prevSlide());
+
+                // キーボード操作
+                document.addEventListener('keydown', (e) => {
+                    if (e.key === 'ArrowLeft') this.prevSlide();
+                    if (e.key === 'ArrowRight') this.nextSlide();
+                });
+
+                // タッチスワイプ
+                let startX = 0;
+                let isDragging = false;
+
+                this.container.addEventListener('touchstart', (e) => {
+                    startX = e.touches[0].clientX;
+                    isDragging = true;
+                });
+
+                this.container.addEventListener('touchmove', (e) => {
+                    if (!isDragging) return;
+                    e.preventDefault();
+                });
+
+                this.container.addEventListener('touchend', (e) => {
+                    if (!isDragging) return;
+                    isDragging = false;
+
+                    const endX = e.changedTouches[0].clientX;
+                    const diffX = startX - endX;
+
+                    if (Math.abs(diffX) > 50) {
+                        if (diffX > 0) {
+                            this.nextSlide();
+                        } else {
+                            this.prevSlide();
+                        }
+                    }
+                });
+            }
+
+            // リサイズイベントリスナーを追加
+            setupResizeListener() {
+                let resizeTimeout;
+                window.addEventListener('resize', () => {
+                    clearTimeout(resizeTimeout);
+                    resizeTimeout = setTimeout(() => {
+                        this.updateCarousel();
+                    }, 100);
+                });
+            }
+
+            startAutoSlide() {
+                this.autoSlideInterval = setInterval(() => {
+                    this.nextSlide();
+                }, 5000);
+            }
+
+            resetAutoSlide() {
+                clearInterval(this.autoSlideInterval);
+                this.startAutoSlide();
             }
         }
 
-        updateCarousel() {
-            // カードの位置を更新
-            const translateX = -(this.currentIndex * 330); // カード幅 + gap
-            this.container.style.transform = `translateX(${translateX}px)`;
-
-            // アクティブカードを更新
-            this.cards.forEach((card, index) => {
-                card.classList.toggle('active', index === this.currentIndex);
-            });
-
-            // インジケーターを更新
-            const indicators = document.querySelectorAll('.indicator');
-            indicators.forEach((indicator, index) => {
-                indicator.classList.toggle('active', index === this.currentIndex);
-            });
-        }
-
-        goToSlide(index) {
-            this.currentIndex = index;
-            this.updateCarousel();
-            this.resetAutoSlide();
-        }
-
-        nextSlide() {
-            this.currentIndex = (this.currentIndex + 1) % this.totalCards;
-            this.updateCarousel();
-            this.resetAutoSlide();
-        }
-
-        prevSlide() {
-            this.currentIndex = (this.currentIndex - 1 + this.totalCards) % this.totalCards;
-            this.updateCarousel();
-            this.resetAutoSlide();
-        }
-
-        addEventListeners() {
-            this.nextBtn.addEventListener('click', () => this.nextSlide());
-            this.prevBtn.addEventListener('click', () => this.prevSlide());
-
-            // キーボード操作
-            document.addEventListener('keydown', (e) => {
-                if (e.key === 'ArrowLeft') this.prevSlide();
-                if (e.key === 'ArrowRight') this.nextSlide();
-            });
-
-            // タッチスワイプ
-            let startX = 0;
-            let isDragging = false;
-
-            this.container.addEventListener('touchstart', (e) => {
-                startX = e.touches[0].clientX;
-                isDragging = true;
-            });
-
-            this.container.addEventListener('touchmove', (e) => {
-                if (!isDragging) return;
-                e.preventDefault();
-            });
-
-            this.container.addEventListener('touchend', (e) => {
-                if (!isDragging) return;
-                isDragging = false;
-
-                const endX = e.changedTouches[0].clientX;
-                const diffX = startX - endX;
-
-                if (Math.abs(diffX) > 50) {
-                    if (diffX > 0) {
-                        this.nextSlide();
-                    } else {
-                        this.prevSlide();
-                    }
-                }
-            });
-        }
-
-        startAutoSlide() {
-            this.autoSlideInterval = setInterval(() => {
-                this.nextSlide();
-            }, 5000);
-        }
-
-        resetAutoSlide() {
-            clearInterval(this.autoSlideInterval);
-            this.startAutoSlide();
-        }
-    }
-
-    // カルーセルを初期化
-    document.addEventListener('DOMContentLoaded', () => {
-        new Carousel();
-    });
-</script>
-
+        // カルーセルを初期化
+        document.addEventListener('DOMContentLoaded', () => {
+            new Carousel();
+        });
+    </script>
 <style>
     html,
     body {
@@ -2284,7 +2318,7 @@ function toggleOptions() {
         margin-top: 30px;
     }
     
-    .inicator {
+    .indicator {
         width: 12px;
         height: 12px;
         border-radius: 50%;
@@ -2299,11 +2333,11 @@ function toggleOptions() {
     }
     
     @media (max-width: 959px) {
-        .exmples-container {
+        .examples-container {
             padding: 0 20px;
             gap: 20px;
         }
-        mple-card {
+        .example-card {
             flex: 0 0 250px;
         }
         .n-button {
@@ -2312,6 +2346,15 @@ function toggleOptions() {
             font-size: 1.2rem;
         }
     }
+    @media (max-width: 480px) {
+    .example-card {
+        flex: 0 0 260px;
+    }
+    .examples-container {
+        gap: 15px;
+        padding: 0 10px;
+    }
+}
     /* アクセス */
     
     .access {
