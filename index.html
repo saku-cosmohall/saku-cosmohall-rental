@@ -197,7 +197,8 @@
         </div>
         <!-- <button class="sub-button">料金シミュレーション</button> -->
         <h3 class="price-calc">料金シミュレーション</h3>
-        <p class="text-align-center">※冷暖房費などの設備料は含まれません</p>
+        <p class="text-align-center">※冷暖房・電気料以外の設備料については<a href="https://www.saku-cosmohall.jp/?page_id=2110">コスモホールHP</a>をご確認ください</p>
+        <p class="text-align-center">※電気料について、舞台照明など特殊な電気機器を使う場合は、別途料金が発生する場合があります</p>
         <form id="feeForm">
             <label>施設:
     <select id="facility" onchange="toggleOptions()">
@@ -231,8 +232,8 @@
     <select id="admissionType">
       <option value="none">徴収しない</option>
       <option value="lt1000">1,000円以下</option>
-      <option value="lt3000">1,000円～3,000円以下</option>
-      <option value="gt3000">3,000円超</option>
+      <option value="lt3000">1,001円～3,000円以下</option>
+      <option value="gt3000">3,001円以上</option>
     </select>
   </label><br>
 
@@ -254,6 +255,25 @@
       <option value="practice">練習・準備利用</option>
     </select>
   </label><br>
+
+            <label>冷暖房:
+                <div class="radio-group">
+                    <input type="radio" id="airConditioning_none" name="airConditioning" value="none" checked>
+                    <label for="airConditioning_none" class="label-radio">利用しない</label>
+                    <input type="radio" id="airConditioning_use" name="airConditioning" value="use">
+                    <label for="airConditioning_use" class="label-radio">利用する</label>
+            </div>
+            </label><br>
+
+            <label>電気料:
+                <div class="radio-group">
+                <input type="radio" id="powerSupply_none" name="powerSupply" value="none" checked>
+                <label for="powerSupply_none" class="label-radio">電源は利用しない</label>
+                <input type="radio" id="powerSupply_use" name="powerSupply" value="use">
+                <label for="powerSupply_use" class="label-radio">電源を利用する</label>
+            </div>
+            </label><br>
+
   <div class="button-wrapper">
             <button type="button" class="sub-button" onclick="calculateFee()">料金計算</button>
   </div>
@@ -261,7 +281,7 @@
 
         <div id="result"></div>
 
-        <script>
+              <script>
             const priceTable = {
                 "大ホール": {
                     "平日": {
@@ -416,37 +436,36 @@
                 "ふるさと広場": { "all": {"none":{"9-12":930,"13-17":1240,"18-22":1240,"9-17":2480,"13-22":2790,"9-22":3410}}},
             };
             
-            // 利用日・入場料区分を施設に応じて切り替え
-function toggleOptions() {
-    const facility = document.getElementById("facility").value;
-    const dayType = document.getElementById("dayType");
-    const admissionType = document.getElementById("admissionType");
-    const purpose = document.getElementById("purpose");
-    const practiceOption = purpose.querySelector('option[value="practice"]');
+            // 利用日・入場料区分・利用目的を施設に応じて切り替え
+            function toggleOptions() {
+                const facility = document.getElementById("facility").value;
+                const dayType = document.getElementById("dayType");
+                const admissionType = document.getElementById("admissionType");
+                const purpose = document.getElementById("purpose");
+                const practiceOption = purpose.querySelector('option[value="practice"]');
 
-    if (["大ホール","小ホール"].includes(facility)) {
-        // 大ホール・小ホールの場合
-        dayType.disabled = false;
-        admissionType.disabled = false;
-        practiceOption.disabled = false;
-        practiceOption.style.color = "";
-    } else {
-        // その他の施設の場合
-        dayType.disabled = true;
-        admissionType.disabled = true;
-        admissionType.value = "none"; // 自動で徴収なしに設定
-        
-        // 練習・準備利用をグレーアウト
-        practiceOption.disabled = true;
-        practiceOption.style.color = "#999";
-        
-        // もし現在練習・準備利用が選択されていたら通常利用に変更
-        if (purpose.value === "practice") {
-            purpose.value = "normal";
-        }
-    }
-}
-
+                if (["大ホール","小ホール"].includes(facility)) {
+                    // 大ホール・小ホールの場合
+                    dayType.disabled = false;
+                    admissionType.disabled = false;
+                    practiceOption.disabled = false;
+                    practiceOption.style.color = "";
+                } else {
+                    // その他の施設の場合
+                    dayType.disabled = true;
+                    admissionType.disabled = true;
+                    admissionType.value = "none"; // 自動で徴収なしに設定
+                    
+                    // 練習・準備利用をグレーアウト
+                    practiceOption.disabled = true;
+                    practiceOption.style.color = "#999";
+                    
+                    // もし現在練習・準備利用が選択されていたら通常利用に変更
+                    if (purpose.value === "practice") {
+                        purpose.value = "normal";
+                    }
+                }
+            }
 
             function calculateFee() {
                 const facility = document.getElementById("facility").value;
@@ -454,6 +473,9 @@ function toggleOptions() {
                 const admission = document.getElementById("admissionType").value;
                 const timeSlot = document.getElementById("timeSlot").value;
                 const purpose = document.getElementById("purpose").value;
+                const airConditioning = document.querySelector('input[name="airConditioning"]:checked').value;
+                const powerSupply = document.querySelector('input[name="powerSupply"]:checked').value;
+                
                 // 平日/休日の区別があるのは大ホール・小ホールだけ、それ以外は'all'
                 const dayKey = ["大ホール","小ホール"].includes(facility) ? dayType : "all";
                 let baseFee = priceTable[facility]?.[dayKey]?.[admission]?.[timeSlot] || 0;
@@ -472,10 +494,65 @@ function toggleOptions() {
                     baseFee += 5230;
                 }
 
+                // 冷暖房費加算
+                if (airConditioning === "use") {
+                    const hours = getHours(timeSlot);
+                    let airConditioningRate = 0;
+                    
+                    if (facility === "大ホール") {
+                        airConditioningRate = 5230;
+                    } else if (facility === "小ホール") {
+                        airConditioningRate = 1570;
+                    } else if (facility === "練習室") {
+                        airConditioningRate = 310;
+                    } else {
+                        // その他の会議室等
+                        airConditioningRate = 200;
+                    }
+                    
+                    baseFee += airConditioningRate * hours;
+                }
+
+                // 電源利用費加算
+                if (powerSupply === "use") {
+                    let powerFee = 0;
+                    
+                    switch(timeSlot) {
+                        case "9-12":
+                        case "13-17":
+                        case "18-22":
+                            powerFee = 310;
+                            break;
+                        case "9-17":
+                        case "13-22":
+                            powerFee = 620;
+                            break;
+                        case "9-22":
+                            powerFee = 930;
+                            break;
+                    }
+                    
+                    baseFee += powerFee;
+                }
+
                 document.getElementById("result").innerHTML = `料金: ${Math.floor(baseFee)}円`;
             }
+            
+            // 時間帯から利用時間数を計算する関数
+            function getHours(timeSlot) {
+                switch(timeSlot) {
+                    case "9-12": return 3;
+                    case "13-17": return 4;
+                    case "18-22": return 4;
+                    case "9-17": return 8;
+                    case "13-22": return 9;
+                    case "9-22": return 13;
+                    default: return 0;
+                }
+            }
+            
             // 初期表示用に呼び出し
-                toggleOptions();
+            toggleOptions();
         </script>
     </section>
 
@@ -568,11 +645,61 @@ function toggleOptions() {
                 </div>
                 <div class="faq-answer">
                     <div class="faq-icon answer-icon">A</div>
-                    <p>ホール及びホールと併せて使用する施設は、使用日の1か月前まで、それ以外の施設は8日前までのキャンセルは無料です。それを過ぎますと、50%のキャンセル料が発生いたします。</p>
+                        <div style="margin-bottom: 10px;">
+                        <strong>ホール及びホールと併せて使用する施設：</strong><br>
+                        <span>・6か月前まで → 無料</span><br>
+                        <span>・1か月前まで → 50%のキャンセル料</span><br>
+                        <span>・1か月前を過ぎた場合 → 100%のキャンセル料</span><br>
+                        <br>
+                        <strong>その他の施設：</strong><br>
+                        <span>・1か月前まで → 無料</span><br>
+                        <span>・7日前まで → 50%のキャンセル料</span><br>
+                        <span>・6日前以降 → 100%のキャンセル料</span>
+                    </div>
+                </div>
+            </div>  
+            <div class="faq-item">
+                <div class="faq-question">
+                    <div class="faq-icon">Q</div>
+                    <h3>飲食はできますか？</h3>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-icon answer-icon">A</div>
+                    <p>大ホール、小ホール以外では飲食OKです。ゴミはお持ち帰りいただくようお願いいたします。</p>
                 </div>
             </div>
-
-            <div class="faq-item">
+                        
+<div class="faq-item">
+  <div class="faq-question">
+    <div class="faq-icon">Q</div>
+    <h3>予約はいつから可能ですか？</h3>
+  </div>
+  <div class="faq-answer">
+    <div class="faq-icon answer-icon">A</div>
+    <div class="faq-content">
+      <strong>【ホール】</strong>
+      <p>
+        使いたい日の<strong>1年前の月の1日</strong>から、<strong>1か月前まで</strong>申し込みできます。
+      </p>
+      <p class="example">例：2026年10月15日に使う場合 → 2025年10月1日から申し込みOK<br>
+      締め切りは 2026年9月15日まで</p>
+      <br>
+      <strong>【練習室・会議室・学習室など】</strong>
+      <p>
+        使いたい日の<strong>6か月前の月の1日</strong> から、<strong>使う日の前日まで</strong>申し込みできます。
+        （※Web予約の場合は <strong>3日前まで</strong>）
+      </p>
+      <p class="example">例：2026年6月10日に使う場合 → 2025年12月1日から申し込みOK<br>
+      締め切りは （窓口）2026年6月9日まで ／ （Web）2026年6月7日まで</p>
+        <br>
+      <strong>【注意】</strong>
+        <p>・ホールと一緒に使う場合は、ホールのルールに合わせます。</p>
+        <p>・2日以上続けて使う場合は、最初の日が基準になります。</p>
+      </ul>
+    </div>
+  </div>
+</div>
+              <div class="faq-item">
                 <div class="faq-question">
                     <div class="faq-icon">Q</div>
                     <h3>暗くできる部屋はありますか？</h3>
@@ -582,6 +709,7 @@ function toggleOptions() {
                     <p>1階会議室には遮光カーテンがあり、暗くすることができます。プロジェクターを使用する際に便利です。</p>
                 </div>
             </div>
+
         </div>
     </section>
     <!-- 利用の実例セクション -->
@@ -663,8 +791,10 @@ function toggleOptions() {
         <h2 class="title"><small>ACCESS</small>アクセス</h2>
         <div class="access-wrapper">
             <div class="access-info">
-                <p>〒385-0029 長野県佐久市臼田字上町２３１−１</p>
-                <p>臼田I.Cから車で1分、駐車場完備</p>
+                <p>〒384-0303 長野県佐久市下小田切124番地1</p>
+                <p>臼田I.Cから車で1分、駐車場300台完備</p>
+                <p>TEL: 0267-82-3962　FAX: 0267-82-3986</p>
+                <p>休館日: 毎週月曜日(祝祭日を除く) ・祝祭日の翌日・12月29日〜1月3日</p>
             </div>
             <div class="map">
                 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3220.137044046824!2d138.47529187470008!3d36.18754877242809!2m3!1f0!2f0!3f0!3m2!1i1024!2i959!4f13.1!3m3!1m2!1s0x601c3409c3f16c0b%3A0x915e2018f5ec22fd!2z5L2Q5LmF5biC44Kz44K544Oi44Ob44O844Or!5e0!3m2!1sja!2sus!4v1755395132809!5m2!1sja!2sus"
@@ -1712,7 +1842,6 @@ function toggleOptions() {
         background-color: #f6f6f6;
     }
     /* ラベル共通スタイル */
-    
     #feeForm label {
         display: grid;
         grid-template-columns: 96px auto;
@@ -1724,8 +1853,18 @@ function toggleOptions() {
         line-height: 1.6;
         gap: 16px;
     }
+    /* ラベル（ラジオボタン） */
+    .radio-group {
+        display: flex;
+        margin-left: 5px;
+    }
+    .label-radio {
+        text-align: left !important;
+        margin-left: 10px !important;
+        grid-template-columns: auto auto !important;
+    }
+
     /* セレクトボックス共通スタイル */
-    
     #feeForm select {
         margin-left: 10px;
         padding: 10px 35px 10px 15px;
@@ -2338,7 +2477,6 @@ function toggleOptions() {
     }
 }
     /* アクセス */
-    
     .access {
         padding: 6rem 3rem;
         position: relative;
@@ -2364,7 +2502,7 @@ function toggleOptions() {
         .access-info,
         .map {
             width: 100%;
-            min-height: 100%;
+            min-height: 200px;
         }
     }
     /* フッター */
