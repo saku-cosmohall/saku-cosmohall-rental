@@ -197,8 +197,11 @@
         </div>
         <!-- <button class="sub-button">料金シミュレーション</button> -->
         <h3 class="price-calc">料金シミュレーション</h3>
-        <p class="text-align-center">※冷暖房・電気料以外の設備料については<a href="https://www.saku-cosmohall.jp/?page_id=2110">コスモホールHP</a>をご確認ください</p>
-        <p class="text-align-center">※電気料について、舞台照明など特殊な電気機器を使う場合は、別途料金が発生する場合があります</p>
+        <ul>
+            <li>※料金は諸条件により変動する場合があります。正確な計算が必要な場合は、お問合せください。</li>
+            <li>※冷暖房・電気料以外の設備料については<a href="https://www.saku-cosmohall.jp/?page_id=2110">コスモホールHP</a>をご確認ください</li>
+            <li>※電気料について、舞台照明など特殊な電気機器を使う場合は、別途料金が発生する場合があります</li>
+        </ul>
         <form id="feeForm">
             <label>施設:
     <select id="facility" onchange="toggleOptions()">
@@ -219,14 +222,14 @@
       <option value="ふるさと広場">ふるさと広場</option>
       <!-- 必要に応じて追加 -->
     </select>
-  </label><br>
+  </label>
 
             <label>利用日:
     <select id="dayType">
       <option value="平日">平日</option>
       <option value="休日">土日・祝日</option>
     </select>
-  </label><br>
+  </label>
 
             <label>入場料区分:
     <select id="admissionType">
@@ -235,7 +238,7 @@
       <option value="lt3000">1,001円～3,000円以下</option>
       <option value="gt3000">3,001円以上</option>
     </select>
-  </label><br>
+  </label>
 
             <label>時間帯:
     <select id="timeSlot">
@@ -246,15 +249,15 @@
       <option value="13-22">13:00～22:00</option>
       <option value="9-22">9:00～22:00</option>
     </select>
-  </label><br>
+  </label>
 
             <label>利用目的:
     <select id="purpose">
       <option value="normal">通常利用</option>
-      <option value="business">営業利用</option>
+      <option value="business">営業利用（営利を目的とする活動）</option>
       <option value="practice">練習・準備利用</option>
     </select>
-  </label><br>
+  </label>
 
             <label>冷暖房:
                 <div class="radio-group">
@@ -263,7 +266,7 @@
                     <input type="radio" id="airConditioning_use" name="airConditioning" value="use">
                     <label for="airConditioning_use" class="label-radio">利用する</label>
             </div>
-            </label><br>
+            </label>
 
             <label>電気料:
                 <div class="radio-group">
@@ -272,7 +275,7 @@
                 <input type="radio" id="powerSupply_use" name="powerSupply" value="use">
                 <label for="powerSupply_use" class="label-radio">電源を利用する</label>
             </div>
-            </label><br>
+            </label>
 
   <div class="button-wrapper">
             <button type="button" class="sub-button" onclick="calculateFee()">料金計算</button>
@@ -482,7 +485,12 @@
 
                 // 利用目的加算
                 if (purpose === "business") {
-                    baseFee *= (facility === "大ホール" ? 1.6 : 3);
+                    if (facility === "大ホール" && admission === "none") {
+                        baseFee *= 1.6; // 大ホール・入場料徴収なしの場合のみ1.6倍
+                    } else if (facility !== "大ホール") {
+                        baseFee *= 3; // その他の施設は3倍
+                    }
+                    // 大ホール・入場料徴収ありの場合は倍率なし（元の料金のまま）
                 } else if (purpose === "practice" && facility === "大ホール") {
                     baseFee *= 0.6;
                 }
@@ -686,7 +694,7 @@
       <br>
       <strong>【練習室・会議室・学習室など】</strong>
       <p>
-        使いたい日の<strong>6か月前の月の1日</strong> から、<strong>使う日の前日まで</strong>申し込みできます。
+        使いたい日の<strong>6か月前の月の1日</strong> から、<strong>使う日の前日まで</strong>申し込みできます。<br>
         （※Web予約の場合は <strong>3日前まで</strong>）
       </p>
       <p class="example">例：2026年6月10日に使う場合 → 2025年12月1日から申し込みOK<br>
@@ -1010,6 +1018,13 @@
         document.addEventListener('DOMContentLoaded', () => {
             new Carousel();
         });
+        // アコーディオン機能
+document.querySelectorAll('.faq-question').forEach(question => {
+    question.addEventListener('click', () => {
+        const faqItem = question.parentElement;
+        faqItem.classList.toggle('active');
+    });
+});
     </script>
 <style>
     html,
@@ -1108,12 +1123,13 @@
         display: flex;
         justify-content: center;
         gap: 2rem;
+        margin: 16px 0;
     }
     
     .sub-button,
     .main-button {
-        min-width: 160px;
-        height: 48px;
+        min-width: 144px;
+        height: 40px;
         display: inline-flex;
         align-items: center;
         justify-content: center;
@@ -1169,11 +1185,12 @@
     }
     
     header h1 {
-        font-size: 1.5rem;
+        font-size: 1.25rem;
         margin: 0;
     }
     
     nav a {
+        font-size: 14px;
         color: var(--text-dark);
         margin-left: 1.5rem;
         text-decoration: none;
@@ -1552,6 +1569,12 @@
         border-radius: 50%;
         animation: float 6s ease-in-out infinite;
     }
+    .room-section ul {
+        list-style-type: none;
+        max-width: 748px;
+        margin: 0 auto 24px auto;
+        padding-left: 0;
+    }
     
     @keyframes float {
         0%,
@@ -1811,18 +1834,15 @@
         padding: 16px 24px;
     }
     /* 料金計算フォームセクション */
-    
     h3.price-calc {
-        margin-bottom: 0;
+        margin-bottom: 24px;
         font-size: 1.5rem;
     }
-    
     .pricing-calculator {
         background: linear-gradient(135deg, #f8fdfb 0%, #f0f9f5 100%);
         padding: 60px 20px;
         position: relative;
     }
-    
     .prcing-calculator::before {
         content: '';
         position: absolute;
@@ -1838,13 +1858,16 @@
         max-width: 700px;
         margin: 0 auto;
         background: white;
-        padding: 40px;
+        padding: 24px;
         border-radius: 20px;
         box-shadow: 0 10px 30px rgba(125, 211, 192, 0.08), 0 5px 15px rgba(125, 211, 192, 0.05);
         border: 1px solid rgba(125, 211, 192, 0.1);
         position: relative;
         overflow: hidden;
         background-color: #f6f6f6;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
     }
     /* ラベル共通スタイル */
     #feeForm label {
@@ -1990,17 +2013,16 @@
         max-width: 700px;
         margin: 20px auto 0;
         text-align: center;
-        padding: 30px;
+        padding: 16px;
         background: linear-gradient(135deg, #f0f9f5, #e8f5f0);
-        border-radius: 15px;
+        border-radius: 16px;
         border: 2px solid #7dd3c0;
         position: relative;
         overflow: hidden;
-        font-size: 2rem;
+        font-size: 1.5rem;
         font-weight: 700;
         color: #7dd3c0;
         text-shadow: 0 2px 4px rgba(125, 211, 192, 0.1);
-        min-height: 60px;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -2227,89 +2249,233 @@
         }
     }
     /* FAQ Section */
-    
+/* FAQ Section - シンプル版 */
+
+.faq {
+    background: white;
+    border: var(--border-dashed);
+    border-radius: var(--border-radius);
+    padding: 6rem 3rem;
+}
+
+.faq h3 {
+    text-align: left;
+}
+
+.faq-container {
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.faq-item {
+    background: var(--bg-white);
+    border-radius: 8px;
+    border: 1px solid #e0e0e0;
+    overflow: hidden;
+    transition: border-color 0.2s ease;
+}
+
+.faq-item:hover {
+    border-color: var(--mint);
+}
+
+.faq-question {
+    background: #f8f9fa;
+    padding: 1.5rem 2rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    cursor: pointer;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.faq-question h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin: 0;
+    color: var(--text-dark);
+}
+
+.faq-answer {
+    background: var(--bg-white);
+    padding: 2rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+}
+
+.faq-answer p {
+    margin: 0;
+    line-height: 1.7;
+    color: var(--text-dark);
+}
+
+.faq-icon {
+    width: 32px;
+    height: 32px;
+    background: var(--mint);
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 1rem;
+    flex-shrink: 0;
+    color: white;
+}
+
+.answer-icon {
+    background: #6c757d;
+}
+
+/* アコーディオン機能（オプション） */
+.faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease, padding 0.3s ease;
+    padding: 0 2rem;
+}
+
+.faq-item.active .faq-answer {
+    max-height: 540px;
+    padding: 2rem;
+}
+
+/* 開閉アイコン */
+.faq-question::after {
+    content: '+';
+    font-size: 1.2rem;
+    margin-left: auto;
+    color: var(--text-gray);
+    transition: transform 0.2s ease;
+}
+
+.faq-item.active .faq-question::after {
+    transform: rotate(45deg);
+}
+
+/* 長いコンテンツ用 */
+.faq-content {
+    line-height: 1.8;
+}
+
+.faq-content strong {
+    color: var(--text-dark);
+    margin: 1rem 0 0.5rem 0;
+    font-size: 0.95rem;
+}
+
+.faq-content strong:first-child {
+    margin-top: 0;
+}
+
+.cancel-policy ul {
+    margin: 0.5rem 0 1rem 0;
+    list-style: none;
+    padding-left: 0;
+}
+
+.cancel-policy li {
+    padding: 0.3rem 0;
+    position: relative;
+    padding-left: 1rem;
+    font-size: 0.9rem;
+}
+
+.cancel-policy li::before {
+    content: '•';
+    color: var(--mint);
+    position: absolute;
+    left: 0;
+    font-weight: bold;
+}
+
+.example {
+    border-radius: 6px;
+    margin: 1rem 0;
+    font-size: 0.85rem;
+    color: #6c757d;
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 959px) {
     .faq {
-        background: white;
-        border: var(--border-dashed);
-        border-radius: var(--border-radius);
-        padding: 6rem 3rem;
+        padding: 4rem 2rem;
     }
-    .faq h3 {
-        text-align: left;
-    }
+    
     .faq-container {
-        max-width: 800px;
-        margin: 0 auto;
-        display: flex;
-        flex-direction: column;
-        gap: 2rem;
-    }
-    
-    .faq-item {
-        background: var(--bg-white);
-        border-radius: 15px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        overflow: hidden;
-        border: 2px solid transparent;
-        transition: all 0.3s ease;
-    }
-    
-    .faq-item:hover {
-        border-color: var(--mint);
-        transform: translateY(-5px);
-        box-shadow: 0 4px 8px rgba(78, 205, 196, 0.2);
+        gap: 1rem;
     }
     
     .faq-question {
-        background: linear-gradient(135deg, var(--mint), #45b7aa);
-        color: white;
-        padding: 1.5rem 2rem;
-        display: flex;
-        align-items: center;
-        gap: 1rem;
-        cursor: pointer;
+        padding: 1.2rem 1.5rem;
     }
     
     .faq-question h3 {
-        font-size: 1.2rem;
-        font-weight: bold;
-        margin: 0;
+        font-size: 1rem;
     }
     
-    .faq-answer {
-        background: var(--bg-white);
-        padding: 2rem;
-        display: flex;
-        align-items: flex-start;
-        gap: 1rem;
-        border-top: 2px solid var(--mint);
-    }
-    
-    .faq-answer p {
-        margin: 0;
-        line-height: 1.6;
-        color: var(--text-gray);
+    .faq-item.active .faq-answer {
+        padding: 1.5rem;
     }
     
     .faq-icon {
-        width: 40px;
-        height: 40px;
-        background: rgba(255, 255, 255, 0.2);
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-weight: bold;
-        font-size: 1.2rem;
-        flex-shrink: 0;
+        width: 28px;
+        height: 28px;
+        font-size: 0.9rem;
+    }
+}
+
+/* スマートフォン（599px以下） */
+@media (max-width: 599px) {
+    .faq {
+        padding: 3rem 1rem;
     }
     
-    .answer-icon {
-        background: var(--yellow);
-        color: var(--text-dark);
-        box-shadow: 0 4px 8px rgba(255, 215, 0, 0.3);
+    .faq-question {
+        padding: 1rem 1.2rem;
+        gap: 0.8rem;
     }
     
+    .faq-question h3 {
+        line-height: 1.4;
+    }
+    
+    .faq-answer {
+        gap: 0.8rem;
+    }
+    
+    .faq-item.active .faq-answer {
+        padding: 1.2rem;
+    }
+    
+    .faq-icon {
+        width: 24px;
+        height: 24px;
+        font-size: 0.8rem;
+    }
+    
+    .faq-question::after {
+        font-size: 1rem;
+    }
+    
+    .faq-content {
+        line-height: 1.6;
+    }
+    
+    .cancel-policy li {
+        font-size: 0.85rem;
+        line-height: 1.5;
+    }
+    
+    .example {
+        font-size: 0.8rem;
+        margin: 0.8rem 0;
+    }
+}
     .testimonials {
         background-color: var(--light-bg);
         padding: 6rem 3rem;
