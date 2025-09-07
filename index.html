@@ -118,6 +118,7 @@
     </section>
 
     <section class="pain-points">
+        <div class="pain-points-wrapper">
         <div class="pain-point">
             <h3>みんなで集まりたいけど<br>部屋が散らかってる</h3>
             <figure class="pain-point-image">
@@ -135,6 +136,7 @@
             <figure class="pain-point-image">
                 <img src="img-pain3.png" alt="">
             </figure>
+        </div>
         </div>
     </section>
 
@@ -224,14 +226,14 @@
             </div>
             <div class="room-card room7">
                 <div class="card-main">
-                    <p class="label">シックな雰囲気</p>
+                    <p class="label">落ち着いた雰囲気</p>
                     <div class="room-price">¥1040/3h〜</div>
                     <div class="room-type-wrapper">
                         <div class="room-type">1階会議室</div>
                     </div>
                 </div>
                 <p class="description">
-                    遮光カーテンで暗くなるので、映画会にも。落ち着いた雰囲気の会議室。<br>【定員】20名
+                    遮光カーテンで暗くなるので、映画会にも。静かなムードの会議室。<br>【定員】20名
                 </p>
             </div>
         </div>
@@ -1506,18 +1508,20 @@ document.querySelectorAll('.faq-question').forEach(question => {
     }
     
     .pain-points {
+        padding: 6rem 3rem;
+        background-color: var(--mint);
+        border-bottom-left-radius: 50% 5vw;
+        border-bottom-right-radius: 50% 5vw;
+    }
+    .pain-points-wrapper {
+        max-width: 1280px;
         width: 100%;
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
         gap: 2rem;
-        padding: 6rem 3rem;
-        background-color: var(--mint);
         justify-items: center;
-        box-sizing: border-box;
-        border-bottom-left-radius: 50% 5vw;
-        border-bottom-right-radius: 50% 5vw;
+        margin: 0 auto;
     }
-    
     .pain-points h3 {
         text-align: center;
         margin-bottom: 0 !important;
@@ -1545,11 +1549,13 @@ document.querySelectorAll('.faq-question').forEach(question => {
         object-fit: contain;
         display: block;
     }
-    
-    @media screen and (max-width: 959px) {
-        .slider-track img {
-            height: 150px;
-            margin-right: 20px;
+    .slider-track img {
+        height: 150px;
+        margin-right: 20px;
+    }
+    @media screen and (max-width: 599px) {
+        .hero p {
+            text-align: left;
         }
     }
     /* 価格セクション */
@@ -1610,7 +1616,7 @@ document.querySelectorAll('.faq-question').forEach(question => {
         position: absolute;
         width: auto;
         height: auto;
-        bottom: 170px;
+        bottom: 160px;
         right: 10vw;
         transform: rotate(15deg);
     }
@@ -1677,10 +1683,10 @@ document.querySelectorAll('.faq-question').forEach(question => {
             left: 12vw;
         }
         #price::after {
-            right: 7vw;
+            right: 10vw;
         }
         .price-icon-surprise {
-            right: 6vw;
+            right: 9vw;
         }
     }
     /* Room Section */
@@ -1690,6 +1696,9 @@ document.querySelectorAll('.faq-question').forEach(question => {
         position: relative;
         overflow: hidden;
         background-color: var(--bg-white);
+        max-width: 1280px;
+        margin: 0 auto;
+        border-radius: 20px;
     }
     
     .room-section::before {
@@ -1852,7 +1861,7 @@ document.querySelectorAll('.faq-question').forEach(question => {
         /* 中央に配置 */
     }
     .room7:hover .card-main {
-        background-image: linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, rgba(91, 209, 199, 0.1) 50%, rgba(255, 234, 127, 0.1) 100%), url('img_kaigishitu2.png');
+        background-image: linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, rgba(91, 209, 199, 0.1) 50%, rgba(255, 234, 127, 0.1) 100%), url('img_kaigishitu11.png');
         background-repeat: no-repeat;
         /* 繰り返さない */
         background-size: cover;
@@ -2259,7 +2268,8 @@ document.querySelectorAll('.faq-question').forEach(question => {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
         gap: 3rem;
-        margin-bottom: 3rem;
+        max-width: 1280px;
+        margin: 0 auto 3rem auto;
     }
     
     .step {
@@ -2653,7 +2663,6 @@ document.querySelectorAll('.faq-question').forEach(question => {
     
     .carousel-container {
         position: relative;
-        overflow: hidden;
     }
     
     .examples-container {
@@ -2714,12 +2723,13 @@ document.querySelectorAll('.faq-question').forEach(question => {
     }
     
     .example-content {
-        padding: 25px;
+        padding: 24px;
     }
     
     .example-content h3 {
         font-size: 1.3rem;
         color: #333;
+        margin-top: 0 !important;
         margin-bottom: 10px;
         font-weight: bold;
     }
@@ -2826,6 +2836,8 @@ document.querySelectorAll('.faq-question').forEach(question => {
     
     .access-wrapper {
         display: flex;
+        max-width: 1280px;
+        margin: 0 auto;
     }
     
     .access-info {
