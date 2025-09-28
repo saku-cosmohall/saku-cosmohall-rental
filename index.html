@@ -117,9 +117,9 @@
             </div>
         </div>
         <h2>3時間200円から使える<br>佐久市コスモホール</h2>
-        <p>臼田I.Cから車で1分<br>コスモホールには色々な部屋があり<br>団体による演奏や演劇だけでなく、個人でも自由に使えます
-            <br> 「こんな使い方してもいいの？料金は？」
-            <br> 気になったら、まずはお気軽にお問い合わせください
+        <p>臼田I.Cから車で1分<br>団体による演奏・演劇から個人利用まで自由に
+            <br> 「料金は？使い方は？」
+            <br>気になったらまずはお問い合わせを
         </p>
         <div class="button-wrapper">
             <a href="https://docs.google.com/forms/d/e/1FAIpQLSf0cUstFiFvNPoKkoUxqmEICZtTfhGPbX7qwjmYBRI7k4gXXg/viewform?usp=header" class="sub-button" target="_blank" rel="noopener noreferrer" onclick="closeMenu()">お問合せ</a>
@@ -2935,7 +2935,7 @@ document.querySelectorAll('.faq-question').forEach(question => {
     max-width: 1280px;
     background-image: url("img_fortune.png");
     background-size: contain;
-    background-color: #3a266f;
+    background-color: #1b0742;
     padding: 20px;
     border-radius: 10px;
     margin: 20px auto;
@@ -2947,8 +2947,8 @@ document.querySelectorAll('.faq-question').forEach(question => {
     font-size: 24px;
 }
 .fortune-btn {
-    background: var(--text-dark);
-    color: white;
+    background: var(--bg-white);
+    color: var(--text-dark);
     border: none;
     padding: 12px 24px;
     border-radius: 25px;
@@ -2958,7 +2958,7 @@ document.querySelectorAll('.faq-question').forEach(question => {
 }
 
 .fortune-btn:hover {
-    background: var(--text-gray);
+    background: #fdffd7;
     transform: scale(1.05);
 }
 
@@ -3017,7 +3017,7 @@ document.addEventListener('DOMContentLoaded', function() {
         '和室',
         '茶室',
         '展示コーナー',
-        '図書館'
+        '練習室',
     ];
     
     // やりたいことリスト
@@ -3065,7 +3065,7 @@ document.addEventListener('DOMContentLoaded', function() {
             // 結果表示
             fortuneText.innerHTML = `
                 <div style="font-size: 20px; margin-top: 10px;">
-                    ${selectedRoom}で${selectedActivity}をする
+                    ${selectedRoom}で<br>${selectedActivity}をする
                 </div>
             `;
             
