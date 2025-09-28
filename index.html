@@ -1247,26 +1247,26 @@ document.querySelectorAll('.faq-question').forEach(question => {
     .sub-button {
         background: var(--mint);
         color: white;
-        box-shadow: 0 4px 8px rgba(78, 205, 196, 0.4);
+        box-shadow: 0 2px 4px rgba(78, 205, 196, 0.4);
     }
     
     .sub-button:hover {
         background: #45b7aa;
         transform: translateY(-2px);
-        box-shadow: 0 4px 8px rgba(78, 205, 196, 0.6);
+        box-shadow: 0 2px 4px rgba(78, 205, 196, 0.6);
     }
     
     .main-button {
         background: var(--yellow) !important;
         color: var(--text-dark) !important;
-        border: 2px solid var(--text-dark) !important;
-        box-shadow: 0 4px 8px rgba(255, 215, 0, 0.4) !important;
+        border: 1px solid var(--text-dark) !important;
+        box-shadow: 0 2px 4px rgba(255, 215, 0, 0.4) !important;
     }
     
     .main-button:hover {
         background: var(--yellow);
         transform: translateY(-2px);
-        box-shadow: 0 4px 8px rgba(255, 215, 0, 0.6);
+        box-shadow: 0 2px 4px rgba(255, 215, 0, 0.6);
     }
     /* ヘッダー */
     
@@ -2937,7 +2937,7 @@ document.querySelectorAll('.faq-question').forEach(question => {
     background-size: contain;
     background-color: #1b0742;
     padding: 20px;
-    border-radius: 10px;
+    border-radius: var(--border-radius);
     margin: 20px auto;
     text-align: center;
     color: white;
@@ -2951,7 +2951,7 @@ document.querySelectorAll('.faq-question').forEach(question => {
     color: var(--text-dark);
     border: none;
     padding: 12px 24px;
-    border-radius: 25px;
+    border-radius: var(--border-radius);
     font-size: 16px;
     cursor: pointer;
     transition: all 0.3s ease;
@@ -2966,7 +2966,7 @@ document.querySelectorAll('.faq-question').forEach(question => {
     margin-top: 15px;
     padding: 15px;
     background: rgba(255, 255, 255, 0.8);
-    border-radius: 8px;
+    border-radius: var(--border-radius);
     font-size: 18px;
     font-weight: bold;
     color: var(--text-dark);
@@ -3011,7 +3011,7 @@ document.querySelectorAll('.faq-question').forEach(question => {
 document.addEventListener('DOMContentLoaded', function() {
     // 部屋リスト
     const rooms = [
-        '大ホール（800席）',
+        '大ホール',
         '小ホール',
         '会議室',
         '和室',
