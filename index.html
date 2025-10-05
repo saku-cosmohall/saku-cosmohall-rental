@@ -893,7 +893,7 @@
 
     <section class="fortune fortune-section" id="fortune">
         <!-- やりたいこと占い -->
-        <div></div>
+        <div>
             <h3>やりたいこと占い</h3>
             <button id="fortuneBtn" class="fortune-btn">占ってみる！</button>
             <div id="fortuneResult" class="fortune-result" style="display: none;">
@@ -906,10 +906,10 @@
         <h2 class="title"><small>ACCESS</small>アクセス</h2>
         <div class="access-wrapper">
             <div class="access-info">
-                <p>〒384-0303 長野県佐久市下小田切124番地1</p>
-                <p>　臼田I.Cから車で1分、駐車場300台完備</p>
-                <p>　JR小海線臼田駅から徒歩約25分</p>
-                <p>Tel: 0267-82-3962　Fax: 0267-82-3986</p>
+                <p>〒384-0303<br>長野県佐久市下小田切124番地1</p>
+                <p>臼田I.Cから車で1分、駐車場300台完備</p>
+                <p>JR小海線臼田駅から徒歩約25分</p>
+                <p>Tel: 0267-82-3962<br>Fax: 0267-82-3986</p>
                 <p>Email: saku-cosmohall@sas.janis.or.jp</p>
                 <p>休館日: 毎週月曜日(祝祭日を除く) ・祝祭日の翌日・12月29日〜1月3日</p>
             </div>
@@ -2958,6 +2958,21 @@ document.querySelectorAll('.faq-question').forEach(question => {
     cursor: pointer;
     transition: all 0.3s ease;
     margin-bottom: 20px;
+    position: relative;
+}
+.fortune-btn::after {
+    content: '';
+    background-image: url(icon_fortune.png);
+    background-repeat: no-repeat;
+    background-size: contain; /* または cover */
+    background-position: center; /* 位置調整 */
+    position: absolute;
+    z-index: 1;
+    left: -272%;
+    right: 0;
+    bottom: -66px;
+    width: 400%;
+    height: 400%;
 }
 
 .fortune-btn:hover {
