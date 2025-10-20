@@ -813,7 +813,7 @@
                     <div class="example-image example1">
                     </div>
                     <div class="example-content">
-                        <h3>コスプレで推しの誕生日会</h3>
+                        <h3>コスプレで<br>推しの誕生日会</h3>
                         <p class="example-tag">研修室</p>
                         <p class="example-description">おやつも持ち寄って楽しい時間を過ごしていただいたようです</p>
                         <span>利用料金：1,910円<br>（会場使用料：510円、冷房費：1,400円）</span><br>
@@ -971,8 +971,7 @@
         observer.observe(step);
     });
 
-    // 3Dカードの回転機能
-        class Carousel {
+         class Carousel {
             constructor() {
                 this.container = document.getElementById('examplesContainer');
                 this.cards = document.querySelectorAll('.example-card');
@@ -980,11 +979,10 @@
                 this.nextBtn = document.getElementById('nextBtn');
                 this.indicatorsContainer = document.getElementById('indicators');
 
-                this.currentIndex = 1; // 真ん中から開始
+                this.currentIndex = 0;
                 this.totalCards = this.cards.length;
 
                 this.init();
-                this.setupResizeListener();
             }
 
             init() {
@@ -994,27 +992,25 @@
                 this.startAutoSlide();
             }
 
-            // 画面サイズに応じてカードのオフセットを計算
+            // 画面中央にアクティブカードを配置
             calculateOffset() {
                 const containerWidth = this.container.parentElement.clientWidth;
                 const cardWidth = this.getCardWidth();
                 const gap = this.getGap();
                 
-                // 画面中央にアクティブカードを配置するための計算
-                const centerOffset = containerWidth / 2 - cardWidth / 2;
+                // 中央位置の計算
+                const centerPosition = (containerWidth - cardWidth) / 2;
                 const cardOffset = this.currentIndex * (cardWidth + gap);
                 
-                return centerOffset - cardOffset;
+                return centerPosition - cardOffset;
             }
 
-            // 現在の画面サイズに応じたカード幅を取得
             getCardWidth() {
-                if (window.innerWidth <= 480) return 260;
-                if (window.innerWidth <= 768) return 280;
-                return 300;
+                if (window.innerWidth <= 480) return 280;
+                if (window.innerWidth <= 768) return 300;
+                return 340;
             }
 
-            // 現在の画面サイズに応じたギャップを取得
             getGap() {
                 if (window.innerWidth <= 480) return 15;
                 if (window.innerWidth <= 768) return 20;
@@ -1031,16 +1027,15 @@
             }
 
             updateCarousel() {
-                // レスポンシブに対応した位置計算
                 const translateX = this.calculateOffset();
                 this.container.style.transform = `translateX(${translateX}px)`;
 
-                // アクティブカードを更新
+                // アクティブ状態を更新
                 this.cards.forEach((card, index) => {
                     card.classList.toggle('active', index === this.currentIndex);
                 });
 
-                // インジケーターを更新
+                // インジケーター更新
                 const indicators = document.querySelectorAll('.indicator');
                 indicators.forEach((indicator, index) => {
                     indicator.classList.toggle('active', index === this.currentIndex);
@@ -1084,11 +1079,6 @@
                     isDragging = true;
                 });
 
-                this.container.addEventListener('touchmove', (e) => {
-                    if (!isDragging) return;
-                    e.preventDefault();
-                });
-
                 this.container.addEventListener('touchend', (e) => {
                     if (!isDragging) return;
                     isDragging = false;
@@ -1104,10 +1094,8 @@
                         }
                     }
                 });
-            }
 
-            // リサイズイベントリスナーを追加
-            setupResizeListener() {
+                // リサイズ対応
                 let resizeTimeout;
                 window.addEventListener('resize', () => {
                     clearTimeout(resizeTimeout);
@@ -1129,7 +1117,7 @@
             }
         }
 
-        // カルーセルを初期化
+        // 初期化
         document.addEventListener('DOMContentLoaded', () => {
             new Carousel();
         });
@@ -1342,7 +1330,7 @@ document.querySelectorAll('.faq-question').forEach(question => {
     }
     /* ハンバーガーメニューが開いている時のアニメーション */
     
-    .hamburger.active span:nth-child(1) {
+    /* .hamburger.active span:nth-child(1) {
         transform: rotate(-45deg) translate(-5px, 6px);
     }
     
@@ -1352,7 +1340,7 @@ document.querySelectorAll('.faq-question').forEach(question => {
     
     .hamburger.active span:nth-child(3) {
         transform: rotate(45deg) translate(-5px, -6px);
-    }
+    } */
     /* モバイルメニューのオーバーレイ */
     
     .mobile-menu {
@@ -2697,7 +2685,7 @@ document.querySelectorAll('.faq-question').forEach(question => {
         gap: 30px;
     }
     .example-card {
-        flex: 0 0 300px;
+        flex: 0 0 320px;
         background: white;
         border-radius: 20px;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -2820,7 +2808,7 @@ document.querySelectorAll('.faq-question').forEach(question => {
             gap: 20px;
         }
         .example-card {
-            flex: 0 0 250px;
+            flex: 0 0 300px;
         }
         .n-button {
             width: 40px;
@@ -2830,7 +2818,7 @@ document.querySelectorAll('.faq-question').forEach(question => {
     }
     @media (max-width: 480px) {
         .example-card {
-            flex: 0 0 260px;
+            flex: 0 0 280px;
         }
         .examples-container {
             gap: 15px;
@@ -3010,7 +2998,7 @@ document.addEventListener('DOMContentLoaded', function() {
         '🧘心を無にするおじさんヨガ',
         '📖推しの一文朗読ナイト',
         '💡無駄アイデア選手権',
-        '👘着物で走る耐久マラソン（屋内）',
+        '👘着物で走る耐久マラソン',
         '🎮64時代を取り戻す会',
         '🍵館長にお茶を点ててみた体験',
         '🪩地味ハロウィン事前練習会',
