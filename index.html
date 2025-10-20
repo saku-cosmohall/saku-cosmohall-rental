@@ -2634,6 +2634,7 @@ document.querySelectorAll('.faq-question').forEach(question => {
         font-size: 1rem;
     }
     
+    .faq-answer,
     .faq-item.active .faq-answer {
         padding: 1.5rem;
     }
@@ -2657,11 +2658,22 @@ document.querySelectorAll('.faq-question').forEach(question => {
     .faq-question h3 {
         line-height: 1.4;
     }
-    .faq-answer {
-        gap: 0.8rem;
-    }
     .faq-item.active .faq-answer {
-        padding: 0.8rem;
+        padding: 1.2rem;
+    }
+    .faq-answer {
+        gap: 1.2rem;
+        transform: translateX(100%);
+        opacity: 0;
+        transition: max-height 0.3s ease, 
+                    padding 0.3s ease,
+                    transform 0.4s ease,
+                    opacity 0.4s ease;
+    }
+    
+    .faq-item.active .faq-answer {
+        transform: translateX(0);
+        opacity: 1;
     }
     .faq-icon {
         width: 24px;
@@ -3053,4 +3065,3 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 </script>
-
