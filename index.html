@@ -125,6 +125,7 @@
             <a href="https://docs.google.com/forms/d/e/1FAIpQLSf0cUstFiFvNPoKkoUxqmEICZtTfhGPbX7qwjmYBRI7k4gXXg/viewform?usp=header" class="sub-button" target="_blank" rel="noopener noreferrer" onclick="closeMenu()">お問合せ</a>
             <a href="https://v2.spm-cloud.com/user/saku/" class="main-button" target="_blank" rel="noopener noreferrer" onclick="closeMenu()">Web予約</a>
         </div>
+        <a href="experience.html" class="read-more">詳しく見る →</a>
     </section>
 
     <section class="pain-points">
@@ -989,7 +990,6 @@
                 this.createIndicators();
                 this.updateCarousel();
                 this.addEventListeners();
-                this.startAutoSlide();
             }
 
             // 画面中央にアクティブカードを配置
@@ -1045,19 +1045,16 @@
             goToSlide(index) {
                 this.currentIndex = index;
                 this.updateCarousel();
-                this.resetAutoSlide();
             }
 
             nextSlide() {
                 this.currentIndex = (this.currentIndex + 1) % this.totalCards;
                 this.updateCarousel();
-                this.resetAutoSlide();
             }
 
             prevSlide() {
                 this.currentIndex = (this.currentIndex - 1 + this.totalCards) % this.totalCards;
                 this.updateCarousel();
-                this.resetAutoSlide();
             }
 
             addEventListeners() {
@@ -1103,17 +1100,6 @@
                         this.updateCarousel();
                     }, 100);
                 });
-            }
-
-            startAutoSlide() {
-                this.autoSlideInterval = setInterval(() => {
-                    this.nextSlide();
-                }, 5000);
-            }
-
-            resetAutoSlide() {
-                clearInterval(this.autoSlideInterval);
-                this.startAutoSlide();
             }
         }
 
