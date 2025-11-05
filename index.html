@@ -18,6 +18,112 @@
   gtag('config', 'G-0MHTLBE5PM');
 </script>
 
+<div id="floatingCharacter" class="floating-character">
+    <div class="speech-bubble">借りてくれたら<br>進化するよ♪</div>
+    <a href="character.html" target="_blank">
+        <img src="cosmo-napolitan.png" alt="コスモなぽりたん">
+    </a>
+</div>
+
+<style>
+.floating-character {
+    position: fixed;
+    right: -200px; /* 最初は画面外 */
+    bottom: 120px;
+    width: 100px;
+    z-index: 999;
+    transform: rotate(16deg); /* 最初は少し右に傾く */
+    opacity: 0;
+    transition:
+        right 2.2s cubic-bezier(0.68, -0.55, 0.265, 1.55),
+        transform 2.2s ease,
+        opacity 1.2s ease;
+}
+
+.floating-character.show {
+    right: -10px; /* 画面内に出てくる */
+    transform: rotate(-8deg); /* 左に少し傾く */
+    opacity: 1;
+}
+
+.floating-character img {
+    width: 100%;
+    height: auto;
+    cursor: pointer;
+    transition: transform 1.5s ease;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+}
+
+.floating-character img:hover {
+    transform: scale(1.1) rotate(-3deg);
+}
+/* 吹き出しスタイル */
+.speech-bubble {
+    position: absolute;
+    width: 120px;
+    text-align: center;
+    bottom: 100%;
+    right: 0;
+    background: #fcffbc;
+    border-radius: 20px;
+    padding: 6px 10px;
+    font-size: 14px;
+    color: #333;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    transform: rotate(-4deg);
+    animation: floatTalk 3s ease-in-out infinite;
+    z-index: 1000; /* 影より上に */
+}
+
+/* ↓ 吹き出しのしっぽ（右下に向かって出す） */
+.speech-bubble::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;  /* 吹き出しの下側に配置 */
+    right: 48px;    /* 右寄りに */
+    border-width: 10px 8px 0 8px;  /* 上向き三角形 */
+    border-style: solid;
+    border-color: #fcffbc transparent transparent transparent; /* 背景と同じ色 */
+    filter: drop-shadow(0 2px 2px rgba(0,0,0,0.05)); /* 少し影をつけて立体感 */
+}
+
+/* ふわふわ動くアニメーション */
+@keyframes floatTalk {
+    0%, 100% { transform: translateY(0) rotate(-4deg); }
+    50% { transform: translateY(-4px) rotate(-3deg); }
+}
+/* スマホ対応 */
+@media (max-width: 768px) {
+    .floating-character {
+        width: 80px;
+        bottom: 80px;
+    }
+    .floating-character.show {
+        right: 10px;
+    }
+}
+</style>
+
+<script>
+window.addEventListener('scroll', function() {
+    const character = document.getElementById('floatingCharacter');
+    const heroSection = document.querySelector('.hero');
+    if (!heroSection) return;
+
+    const heroRect = heroSection.getBoundingClientRect();
+    const windowHeight = window.innerHeight;
+
+    // heroが少しでも画面内に見えているかどうか
+    const isHeroVisible = heroRect.bottom > 100 && heroRect.top < windowHeight - 100;
+
+    if (isHeroVisible) {
+        character.classList.add('show');
+    } else {
+        character.classList.remove('show');
+    }
+});
+</script>
+
 <body>
     <header>
         <h1><a href="#" class="top-link">佐久市コスモホール</a></h1>
@@ -128,6 +234,21 @@
         <!-- <a href="experience.html" class="read-more">詳しく見る →</a> -->
     </section>
 
+    <section id="news" class="news">
+        <div class="container">
+           <h2 class="title"><small>NEWS</small></h2>
+                <ul class="news-list">
+                    <li class="news-item">
+                        <time class="news-date">2025.11.02</time><br>
+                        <a href="#" class="news-link">
+                        体験レポートを公開しました！
+                        </a>
+                    </li>
+                    <!-- 繰り返し -->
+                 </ul>
+        </div>
+    </section>
+    
     <section class="pain-points">
         <div class="pain-points-wrapper">
             <div class="pain-point">
@@ -155,7 +276,7 @@
         <img src="img_cake.png" alt="ケーキ" class="price-icon-cake">
         <div class="angled-lines">コスモホールを使いませんか？</div>
         <h2>3時間200円〜<br>手頃な料金で借りられます</h2>
-        <p<span>※冷暖房、電源などを使う場合は別途費用がかかります</span><br><span>※会議室の17時以降の利用は、夜間料金5,230円がプラスになります</span></p>
+        <p></p><span>※冷暖房、電源などを使う場合は別途費用がかかります</span><br><span>※会議室の17時以降の利用は、夜間料金5,230円がプラスになります</span></p>
         <img src="img_surprise.png" alt="サプライズ演出" class="price-icon-surprise">
         <div class="image-space"></div>
     </section>
@@ -844,7 +965,7 @@
                         <p class="example-tag">学習室1・2</p>
                         <p class="example-description">合わせて38畳の広々空間なので、みんなでかるたをするのにもいいですね</p>
                         <span>利用料金：1,440円<br>（会場使用料：1,440円）</span><br>
-                        <span>利用時間：9:00～17:00                        
+                        <span>利用時間：9:00～17:00</span><br>                        
                         <span>※写真はイメージです</span>
                     </div>
                 </div>
@@ -856,9 +977,10 @@
                         <h3>勉強会</h3>
                         <p class="example-tag">研修室</p>
                         <p class="example-description">冷暖房が要らない季節だと、よりリーズナブルにご利用いただけますね</p>
-                        <span>利用料金：510円<br>（会場使用料：200円、電源利用：310円）</span><br>
-                        <span>利用時間：13:00～17:00</span>                       
-                        <span>※写真はイメージです</span>
+                        <span>利用料金：310円<br>（会場使用料：310円）</span><br>
+                        <span>利用時間：13:00～17:00</span><br>                      
+                        <span>※写真はイメージです</span><br>
+                        <a href="experience.html">体験レポート</a>
                     </div>
                 </div>
 
@@ -1210,7 +1332,6 @@ document.querySelectorAll('.faq-question').forEach(question => {
         }
     }
     /* ボタン */
-    
     .button-wrapper {
         display: flex;
         justify-content: center;
@@ -1259,7 +1380,6 @@ document.querySelectorAll('.faq-question').forEach(question => {
         box-shadow: 0 2px 4px rgba(255, 215, 0, 0.6);
     }
     /* ヘッダー */
-    
     header {
         background-color: #f4f7f8;
         color: var(--text-dark);
@@ -1550,7 +1670,22 @@ document.querySelectorAll('.faq-question').forEach(question => {
             padding: 0 1rem;
         }
     }
-    
+    /* お知らせセクション */
+    .news {
+        background-color: #fff;
+        padding: 1rem 3rem;
+        width: 50%;
+        margin: 0 auto 3rem auto;
+    }
+    #news h2.title {
+        text-align: left;
+        margin-bottom: 1rem;
+    }
+    .news-list {
+        list-style: none; /* リストマーカー消去 */
+        padding-left: 0;  /* 左の余白もリセット */
+    }
+
     .pain-points {
         padding: 6rem 3rem;
         background-color: var(--mint);
@@ -3027,3 +3162,4 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 </script>
+
