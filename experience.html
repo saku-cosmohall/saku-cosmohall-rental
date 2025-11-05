@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>【体験談】会議室を借りてみた！予約から利用までの流れを写真付きで解説 | 佐久市コスモホール</title>
+  <meta name="description" content="佐久市コスモホールの研修室を実際に借りてみました！Web予約の方法、支払い、当日の流れを写真付きで詳しく紹介。初めての方でも安心して利用できるポイントをお伝えします。">
+  <meta name="keywords" content="佐久市コスモホール,会議室,研修室,貸し会議室,体験談,予約方法,利用料金,佐久市">
+  <link rel="canonical" href="https://saku-cosmohall.github.io/saku-cosmohall-rental/experience.html">
+  
+  <!-- OGP -->
+  <meta property="og:title" content="【体験談】研修室を借りてみた！予約から利用までの流れを写真付きで解説 | 佐久市コスモホール">
+  <meta property="og:description" content="佐久市コスモホールの研修室を実際に借りてみました！Web予約の方法、支払い、当日の流れを写真付きで詳しく紹介。">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://saku-cosmohall.github.io/saku-cosmohall-rental/experience.html">
+  
+  <style>
+    :root {
+      --mint: #4ecdc4;
+      --yellow: #ffd700;
+      --light-yellow: #ffed4e;
+      --pink: #FF6B6B;
+      --light-bg: #f5fcfa;
+      --text-dark: #223843;
+      --text-gray: #666;
+      --bg-white: #ffffff;
+      --border-radius: 20px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Noto Sans JP', sans-serif;
+      line-height: 1.8;
+      color: var(--text-dark);
+      background-color: var(--light-bg);
+      min-height: 100vh;
+      letter-spacing: 1px;
+    }
+
+    /* ヘッダー（追従する） */
+    header {
+      background-color: #ffffff;
+      padding: 1rem;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .header-inner {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      color: var(--text-gray);
+      font-size: 0.9rem;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      font-weight: 600;
+    }
+
+    .back-link:hover {
+      color: var(--mint);
+      transform: translateX(-3px);
+    }
+
+    .back-link::before {
+      content: "←";
+      margin-right: 0.3rem;
+      font-size: 1.1rem;
+    }
+
+    /* タイトルセクション */
+    .title-section {
+      background: linear-gradient(135deg, var(--mint) 0%, #45b7aa 100%);
+      padding: 2.5rem 1rem;
+      box-shadow: 0 4px 20px rgba(78, 205, 196, 0.2);
+      margin-bottom: 0;
+    }
+
+    .title-inner {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    h1 {
+      font-size: clamp(1.3rem, 4vw, 1.8rem);
+      color: #ffffff;
+      font-weight: 700;
+      line-height: 1.6;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    /* メインコンテンツ */
+    main {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 2rem 1rem 4rem;
+    }
+
+    /* 導入セクション */
+    .intro-section {
+      background: var(--bg-white);
+      border-radius: var(--border-radius);
+      padding: 2rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    }
+
+    .intro-section h2 {
+      font-size: 1.3rem;
+      color: var(--text-dark);
+      margin-bottom: 1rem;
+      position: relative;
+      padding-left: 1rem;
+    }
+
+    .intro-section h2::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 4px;
+      height: 80%;
+      background: var(--mint);
+      border-radius: 2px;
+    }
+
+    .intro-text {
+      font-size: 1.05rem;
+      line-height: 1.9;
+      color: var(--text-gray);
+    }
+
+    /* 利用情報カード */
+    .info-description {
+      margin-bottom: 1.5rem;
+    }
+    .info-card {
+      background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+      color: var(--text-dark);
+      border-radius: var(--border-radius);
+      padding: 2rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+      border: 1px solid rgba(0, 0, 0, 0.05);
+    }
+    .info-card h2 {
+      font-size: 1.2rem;
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--text-dark);
+    }
+
+    .info-card h2::before {
+      content: "📋";
+      font-size: 1.5rem;
+    }
+
+    .info-grid {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .info-item {
+      background: rgba(255, 255, 255, 0.95);
+      color: #333;
+      backdrop-filter: blur(10px);
+      padding: 1rem 1.2rem;
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .info-label {
+      font-size: 0.85rem;
+      color: var(--text-gray);
+      margin-bottom: 0.3rem;
+    }
+
+    .info-value {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--text-dark);
+    }
+
+    .info-value strong {
+      font-size: 1.4rem;
+      color: var(--mint);
+    }
+
+    /* コンテンツセクション */
+    .content-section {
+      background: var(--bg-white);
+      border-radius: var(--border-radius);
+      padding: 2rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    }
+
+    .content-section h2 {
+      font-size: 1.4rem;
+      color: var(--text-dark);
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.8rem;
+      border-bottom: 3px solid var(--mint);
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+
+    .content-section h2::after {
+      content: "";
+      position: absolute;
+      bottom: -3px;
+      left: 0;
+      width: 80px;
+      height: 3px;
+      background: var(--yellow);
+    }
+
+    .content-section h3 {
+      font-size: 1.15rem;
+      color: var(--mint);
+      margin: 2rem 0 1rem;
+      font-weight: 600;
+      padding-left: 0.8rem;
+      border-left: 4px solid var(--mint);
+    }
+
+    .content-section p {
+      line-height: 1.9;
+      margin-bottom: 1rem;
+    }
+
+    .content-section a {
+      color: var(--mint);
+      font-weight: 600;
+      text-decoration: underline;
+      transition: color 0.3s ease;
+    }
+
+    .content-section a:hover {
+      color: #45b7aa;
+    }
+
+    .step-number {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      background: linear-gradient(135deg, var(--mint) 0%, #45b7aa 100%);
+      color: white;
+      border-radius: 50%;
+      font-weight: 700;
+      font-size: 1rem;
+      margin-right: 0.8rem;
+      box-shadow: 0 2px 8px rgba(78, 205, 196, 0.3);
+    }
+
+    /* 画像 */
+    .content-image {
+      width: 100%;
+      max-width: 700px;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      margin: 1.5rem auto;
+      display: block;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .content-image:hover {
+      transform: scale(1.02);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+    }
+    
+    .content-image-wrapper {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin: 1.5rem 0;
+    }
+
+    /* 注意書き */
+    .notice-box {
+      background: linear-gradient(135deg, #fff5e6 0%, #ffe4cc 100%);
+      border-left: 5px solid #ff9800;
+      padding: 1.2rem 1.5rem;
+      margin: 1.5rem 0;
+      border-radius: 8px;
+      position: relative;
+    }
+
+    .notice-box p {
+      margin: 0;
+      color: #e65100;
+      font-weight: 500;
+      line-height: 1.7;
+    }
+
+    /* TIPSボックス */
+    .tips-box {
+      background: linear-gradient(135deg, #e0f7f6 0%, #c8eae7 100%);
+      border-left: 5px solid var(--mint);
+      padding: 1.2rem 1.5rem;
+      margin: 1.5rem 0;
+      border-radius: 8px;
+    }
+
+    .tips-box::before {
+      content: "✨ POINT";
+      display: block;
+      font-weight: 700;
+      color: var(--mint);
+      margin-bottom: 0.5rem;
+      font-size: 0.9rem;
+    }
+
+    .tips-box p {
+      margin: 0;
+      line-height: 1.8;
+    }
+
+    .tips-box a {
+      color: var(--mint);
+      font-weight: 600;
+      text-decoration: underline;
+    }
+
+    /* レビューセクション */
+    .review-section {
+      background: var(--light-bg);
+      border-radius: var(--border-radius);
+      padding: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .review-section h2 {
+      font-size: 1.4rem;
+      color: var(--text-dark);
+      margin-bottom: 1.5rem;
+      text-align: center;
+    }
+
+    .review-grid {
+      display: grid;
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+
+    .review-card {
+      background: var(--bg-white);
+      border-radius: 15px;
+      padding: 1.8rem;
+      box-shadow: 0 3px 15px rgba(0, 0, 0, 0.08);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .review-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.12);
+    }
+
+    .review-card h3 {
+      font-size: 1.1rem;
+      color: var(--text-dark);
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .review-card.good h3::before {
+      content: "😊";
+      font-size: 1.5rem;
+    }
+
+    .review-card.concern h3::before {
+      content: "🤔";
+      font-size: 1.5rem;
+    }
+
+    .review-list {
+      list-style: none;
+      padding: 0;
+    }
+
+    .review-list li {
+      padding: 0.6rem 0;
+      padding-left: 1.8rem;
+      position: relative;
+      color: var(--text-gray);
+      line-height: 1.7;
+    }
+
+    .review-list li::before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      color: var(--mint);
+      font-weight: 700;
+      font-size: 1.2rem;
+    }
+
+    .review-card.concern .review-list li::before {
+      content: "▸";
+      color: var(--pink);
+    }
+
+/* まとめ */
+.summary-box {
+  color: var(--text-dark);
+  background: #fff;
+  border-radius: var(--border-radius);
+  padding: 2rem;
+  margin-top: 2rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  border-left: 5px solid var(--mint);
+}
+
+.summary-box h3 {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--text-dark);
+}
+
+.summary-box h3::before {
+  content: "📝";
+  font-size: 1.5rem;
+}
+
+.summary-box p {
+  line-height: 1.9;
+  font-size: 1.05rem;
+  color: var(--text-gray);
+}
+
+    /* フッター */
+    footer {
+      text-align: center;
+      background: var(--bg-white);
+      padding: 2.5rem 2rem;
+      margin-top: 3rem;
+      box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
+    }
+
+    .footer-link {
+      display: inline-block;
+      background: var(--yellow);
+      color: var(--text-dark);
+      padding: 1rem 2.5rem;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 1.05rem;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(255, 215, 0, 0.4);
+      border: 2px solid var(--text-dark);
+    }
+
+    .footer-link:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(255, 215, 0, 0.6);
+      background: var(--light-yellow);
+    }
+
+    footer p {
+      margin-top: 1.5rem;
+      color: var(--text-gray);
+      font-size: 0.9rem;
+      line-height: 1.8;
+    }
+
+    /* レスポンシブ */
+    @media (max-width: 768px) {
+      .title-section {
+        padding: 2rem 1rem;
+      }
+
+      h1 {
+        font-size: 1.2rem;
+      }
+
+      .info-card, .content-section, .review-section {
+        padding: 1.5rem;
+      }
+
+      .content-section h2 {
+        font-size: 1.2rem;
+      }
+
+      .content-image-wrapper {
+        grid-template-columns: 1fr;
+      }
+
+      .step-number {
+        width: 32px;
+        height: 32px;
+        font-size: 0.9rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <a href="index.html" class="back-link">トップページに戻る</a>
+  </div>
+</header>
+
+<div class="title-section">
+  <div class="title-inner">
+    <h1>【体験談】会議室を借りてみた！予約から利用までの流れを写真付きで解説</h1>
+  </div>
+</div>
+
+<main>
+  <!-- 導入 -->
+  <section class="intro-section">
+    <h2>実際に借りてみました！</h2>
+    <p class="intro-text">
+      こんにちは！コスモホールスタッフのKです。<br>
+      利用者の皆さんの立場を理解するために、スタッフの私が実際に<strong>佐久市コスモホールの会議室</strong>を個人利用してみました。<br>
+      初めての方でも安心して利用できるよう、予約から当日の利用まで、写真付きで詳しくレポートします💡
+    </p>
+  </section>
+
+  <!-- 利用情報 -->
+  <div class="info-card">
+    <h2>今回利用した部屋</h2>
+    <p class="info-description">今回は<strong>佐久市コスモホールの研修室（2階）</strong>を借りて利用しました。
+少人数の打ち合わせやセミナーにぴったりの、静かで落ち着いたお部屋です。</p>
+    <div class="info-grid">
+      <div class="info-item">
+        <div class="info-label">利用した部屋</div>
+        <div class="info-value">研修室（2階）</div>
+      </div>
+      <div class="info-item">
+        <div class="info-label">利用料金</div>
+        <div class="info-value"><strong>310円</strong>（会場使用料のみ）</div>
+      </div>
+      <div class="info-item">
+        <div class="info-label">利用時間</div>
+        <div class="info-value">13:00〜17:00（4時間）</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- STEP1: Web予約 -->
+  <section class="content-section">
+    <h2><span class="step-number">1</span>佐久市コスモホールの会議室をWebで予約</h2>
+    
+    <p>
+      窓口でも予約できますが、
+      <a href="https://v2.spm-cloud.com/user/saku/" target="_blank" rel="noopener">佐久市のWeb予約システム</a>から簡単に空き確認・予約ができます！<br>
+      ただし、<strong>初めて利用する場合は利用承認に時間がかかる</strong>ので注意が必要です。
+    </p>
+    <img src="img_experience/yoyaku_system_top.png" alt="佐久市Web予約システムのトップ画面" class="content-image">
+    <p>Web予約が初めての方は、トップ画面の下にある「初めての方へ」を押して、手続きを進めてください。</p>
+    <img src="img_experience/for-first-users.png" alt="佐久市Web予約システムのトップ画面" class="content-image">
+    <div class="notice-box">
+      <p>💡今回私は初めてのWeb予約だったので、利用申請を行いました。土曜日に申請して、承認が下りたのは月曜日でした。余裕を持っての申請がおすすめです</p>
+    </div>
+
+    <p>利用承認が下りたら、システムから承認メールが届きます。システムにログインして予約します。</p>
+    <p>操作自体はシンプルですが、<strong>コスモホールの部屋の詳細はこのシステムでは確認できません</strong>。
+      先に<a href="https://www.saku-cosmohall.jp/?page_id=2122#daihall">コスモホールのウェブサイト</a>を確認して部屋を決めてから、予約するのがおすすめです！</p>
+    <div class="content-image-wrapper">
+      <img src="img_experience/yoyaku-system-select.png" alt="Web予約の選択画面" class="content-image">
+      <img src="img_experience/yoyaku_system_page.png" alt="Web予約の入力画面" class="content-image">
+    </div>
+
+    <div class="tips-box">
+      <p><strong>Web予約は利用日の3営業日前まで</strong>可能です。それより直前の利用については、直接電話で佐久市コスモホールにお問い合わせください。</p>
+    </div>
+
+    <p>
+      予約状況はマイページでいつでも確認できます。利用前日のリマインドメールなどは届かないので、自分でカレンダーなどに入れておきましょう📅
+    </p>
+  </section>
+
+  <!-- STEP2: 利用料支払い -->
+  <section class="content-section">
+    <h2><span class="step-number">2</span>利用料の支払い</h2>
+    
+    <p>
+      予約後、数日すると<strong>請求書が登録住所に郵送</strong>されます。<br>
+      銀行振込または窓口で支払います。私は出勤ついでに窓口で払いました💰
+    </p>
+    <div class="content-image-wrapper">
+      <img src="img_experience/invoice1.jpg" alt="請求書の表面" class="content-image">
+      <img src="img_experience/invoice2.jpg" alt="請求書の裏面" class="content-image">
+    </div>
+    <p>
+      支払いが完了すると、<strong>許可書</strong>がもらえます。<br>
+      利用当日に必ず持参する必要はありませんが、念のためスマホで写真を撮っておくと安心です📱
+    </p>
+  </section>
+
+  <!-- STEP3: 利用当日 -->
+  <section class="content-section">
+    <h2><span class="step-number">3</span>利用当日の流れ</h2>
+    
+    <h3>駐車場について</h3>
+    <p>
+      利用日は大ホールでイベントがあり、ホールに一番近い駐車場は満車💦<br>
+      道路を挟んだ向かい側の駐車場に停めました。
+    </p>
+
+    <img src="img_experience/parking.jpg" alt="コスモホールの駐車場" class="content-image">
+
+    <div class="tips-box">
+      <p>駐車場は複数あり、数百台分のスペースがあるので停められないことはそうそうありません。念のため、大ホールでイベントがあるか、<a href="https://www.saku-cosmohall.jp/?page_id=2078/" target="_blank" rel="noopener">コスモホールのイベントカレンダー</a>で事前にチェックしておくと安心です！</p>
+    </div>
+
+    <h3>受付で手続き</h3>
+    <p>
+      まずは受付に声をかけます。<br>
+    </p>
+
+    <img src="img_experience/office.JPEG" alt="コスモホール事務所の受付" class="content-image">
+    
+    <p>
+      「佐久市コスモホールをご使用される皆様へ」という用紙をもらいます。<strong>退室時に必要事項を記入のうえ、返却</strong>することになります。
+    </p>
+
+    <img src="img_experience/for-users.JPEG" alt="利用時の記入用紙" class="content-image">
+
+    <p>
+      部屋の鍵は基本的にスタッフが開けておいてくれるので、そのまま部屋に向かいます。<br>
+      部屋の場所が分からない場合は、スタッフに尋ねて案内してもらいましょう。
+    </p>
+
+    <h3>研修室に入室</h3>
+    <p>
+      今回使ったのは2階の一番奥にある<strong>研修室</strong>です。
+    </p>
+    <div class="content-image-wrapper">
+      <img src="img_experience/kenshusitu1.JPEG" alt="研修室への廊下" class="content-image">
+      <img src="img_experience/kenshusitu2.JPEG" alt="研修室の入口" class="content-image">
+    </div>
+    <p>
+      <strong>暖房を使う場合</strong>は、このスイッチを入れます。<br>
+      ※暖房は有料（1時間200円）ですので、必要な場合のみ入れましょう。
+    </p>
+
+    <img src="img_experience/switch.JPEG" alt="暖房のスイッチ" class="content-image">
+
+    <p>
+      電源コンセントは2か所にあります。<br>
+      （※電気料は有料です。午前or午後のみなら310円です）
+    </p>
+    <div class="content-image-wrapper">
+      <img src="img_experience/dengen1.JPEG" alt="電源コンセント①" class="content-image">
+      <img src="img_experience/dengen2.JPG" alt="電源コンセント②" class="content-image">
+    </div>
+    <p>
+      机と椅子は自由に動かせるので、用途に合わせてレイアウト変更できます💺<br>
+      壁が白いので、プロジェクターを直接投影できそうです！小型プロジェクターは330円でレンタルできます（2024年導入の新品です✨）
+    </p>
+    <div class="content-image-wrapper">
+      <img src="img_experience/kenshusitu3.JPEG" alt="研修室の室内①" class="content-image">
+      <img src="img_experience/kenshusitu4.JPEG" alt="研修室の室内②" class="content-image">
+    </div>
+    
+    <h3>退室時</h3>
+    <p>
+      利用が終わったら、机や椅子を元の状態に戻して退出します。<br>
+      「佐久市コスモホールをご使用される皆様へ」の点検欄を見ながら、忘れ物がないかなど確認しましょう✅
+    </p>
+
+    <img src="img_experience/for-users_after.jpg" alt="退室時の点検項目" class="content-image">
+
+    <p>
+      最後に受付で用紙を返却し、<strong>利用に応じて電気料や設備料を支払って</strong>終了です。
+    </p>
+
+    <img src="img_experience/office.JPEG" alt="事務所で精算" class="content-image">
+
+    <div class="notice-box">
+      <p>コスモホールは<strong>現金のみ</strong>の取り扱いです。事前に現金を用意しておきましょう💴</p>
+    </div>
+  </section>
+
+  <!-- レビュー -->
+  <section class="review-section">
+    <h2>実際に利用してみた感想</h2>
+    
+    <div class="review-grid">
+      <div class="review-card good">
+        <h3>良かったポイント</h3>
+        <ul class="review-list">
+          <li>初めての利用でも、予約は想像以上に簡単だった</li>
+          <li>利用料が安い！（特に冷暖房が不要な時期は最高）</li>
+          <li>駐車場が広くて停めやすく、安心</li>
+          <li>秋は紅葉がきれい🍁</li>
+        </ul>
+      </div>
+
+      <div class="review-card concern">
+        <h3>ちょっと気になったこと</h3>
+        <ul class="review-list">
+          <li>初回はアカウント申請に時間がかかる（特に土日祝に申請した場合）</li>
+          <li>wifiが会議室では使えない（使えるのはロビーだけ）</li>
+          <li>窓口では現金払いのみ</li>
+          <li>予約のキャンセルや変更がWebでできない</li>
+          <li>リマインドメールが来ない</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="summary-box">
+      <h3>全体的な感想</h3>
+      <p>
+        全体的にはスムーズに利用できました！✨<br>
+        利用料もリーズナブルで、初めてでも安心して使えます！<br><br>
+        今回、参加者を募集してWebデザインの勉強会を企画したのですが、やはり<strong>告知が一番の課題</strong>でした。<br>
+        主催者として告知方法を工夫することは当然なのですが、ホールが応援してくれたら嬉しいな…と。<br>        
+        コスモホールスタッフとして、このあたり何かできないか考えていきたいと思います！<br>
+        ぜひ皆さんも一度ご利用いただけると嬉しいです。<br><br>
+        利用した感想もお寄せいただけると改善に繋げられます<br>
+        よろしくお願いします😊
+      </p>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <a href="index.html" class="footer-link">トップページに戻る</a>
+  <p>
+    佐久市コスモホール<br>
+    〒384-0303 長野県佐久市下小田切124番地1<br>
+    Tel: 0267-82-3962
+  </p>
+</footer>
+
+</body>
+</html>
