@@ -575,8 +575,9 @@ nav a {
   .hero p {
     text-align: left;
   }
-  #news {
-    width: 80%;
+  .news {
+    width: 90%;
+    padding: 1rem 1rem;
   }
 }
 /* 価格セクション */
