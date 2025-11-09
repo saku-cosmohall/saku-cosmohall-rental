@@ -575,7 +575,7 @@ nav a {
   .hero p {
     text-align: left;
   }
-  .news {
+  #news {
     width: 80%;
   }
 }
