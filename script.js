@@ -17,6 +17,28 @@ window.addEventListener("scroll", function () {
   }
 });
 
+// スライダーのクリックで停止/再開機能
+document.addEventListener('DOMContentLoaded', function() {
+    const sliderTrack = document.querySelector('.slider-track');
+    let isPaused = false;
+    
+    if (sliderTrack) {
+        sliderTrack.addEventListener('click', function() {
+            if (isPaused) {
+                // 再開
+                sliderTrack.style.animationPlayState = 'running';
+                sliderTrack.classList.remove('paused');
+                isPaused = false;
+            } else {
+                // 停止
+                sliderTrack.style.animationPlayState = 'paused';
+                sliderTrack.classList.add('paused');
+                isPaused = true;
+            }
+        });
+    }
+});
+
 function toggleMenu() {
   const hamburger = document.querySelector(".hamburger");
   const mobileMenu = document.getElementById("mobileMenu");
@@ -61,28 +83,6 @@ window.addEventListener("resize", function () {
   if (window.innerWidth > 959 && mobileMenu.classList.contains("active")) {
     closeMenu();
   }
-});
-
-// スライダーのクリックで停止/再開機能
-document.addEventListener('DOMContentLoaded', function() {
-    const sliderTrack = document.querySelector('.slider-track');
-    let isPaused = false;
-    
-    if (sliderTrack) {
-        sliderTrack.addEventListener('click', function() {
-            if (isPaused) {
-                // 再開
-                sliderTrack.style.animationPlayState = 'running';
-                sliderTrack.classList.remove('paused');
-                isPaused = false;
-            } else {
-                // 停止
-                sliderTrack.style.animationPlayState = 'paused';
-                sliderTrack.classList.add('paused');
-                isPaused = true;
-            }
-        });
-    }
 });
 
 const priceTable = {
