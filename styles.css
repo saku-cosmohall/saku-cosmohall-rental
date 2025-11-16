@@ -1940,17 +1940,13 @@ footer {
   color: var(--text-dark);
 }
 /* スライダーのクリック停止機能 */
-.slider-wrapper {
-    position: relative;
-}
-
 .slider-track {
-    cursor: pointer;
-    transition: opacity 0.3s ease;
+  cursor: pointer;
+  transition: opacity 0.3s ease;
 }
 
 .slider-track:hover {
-    opacity: 0.9;
+  opacity: 0.9;
 }
 
 /* 停止中の一時停止マーク */
@@ -1960,10 +1956,10 @@ footer {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    font-size: 1.5rem; /* 小さく */
+    font-size: 1.5rem;
     color: rgba(255, 255, 255, 0.9);
-    background: rgba(128, 128, 128, 0.6); /* グレーで半透明 */
-    padding: 10px 15px; /* 小さく */
+    background: rgba(128, 128, 128, 0.6);
+    padding: 10px 15px;
     border-radius: 10px;
     z-index: 10;
     pointer-events: none;
@@ -1972,14 +1968,14 @@ footer {
 }
 
 @keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translate(-50%, -50%) scale(0.8);
-    }
-    to {
-        opacity: 1;
-        transform: translate(-50%, -50%) scale(1);
-    }
+  from {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
 }
 /* 銀河の魔法 */
 /* .galaxy-magic {
