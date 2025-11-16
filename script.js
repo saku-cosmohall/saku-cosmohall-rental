@@ -1,22 +1,3 @@
-window.addEventListener("scroll", function () {
-  const character = document.getElementById("floatingCharacter");
-  const heroSection = document.querySelector(".hero");
-  if (!heroSection) return;
-
-  const heroRect = heroSection.getBoundingClientRect();
-  const windowHeight = window.innerHeight;
-
-  // heroが少しでも画面内に見えているかどうか
-  const isHeroVisible =
-    heroRect.bottom > 100 && heroRect.top < windowHeight - 100;
-
-  if (isHeroVisible) {
-    character.classList.add("show");
-  } else {
-    character.classList.remove("show");
-  }
-});
-
 // スライダーのクリックで停止/再開機能
 document.addEventListener('DOMContentLoaded', function() {
     const sliderTrack = document.querySelector('.slider-track');
@@ -37,6 +18,25 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }
+});
+
+window.addEventListener("scroll", function () {
+  const character = document.getElementById("floatingCharacter");
+  const heroSection = document.querySelector(".hero");
+  if (!heroSection) return;
+
+  const heroRect = heroSection.getBoundingClientRect();
+  const windowHeight = window.innerHeight;
+
+  // heroが少しでも画面内に見えているかどうか
+  const isHeroVisible =
+    heroRect.bottom > 100 && heroRect.top < windowHeight - 100;
+
+  if (isHeroVisible) {
+    character.classList.add("show");
+  } else {
+    character.classList.remove("show");
+  }
 });
 
 function toggleMenu() {
@@ -415,12 +415,12 @@ function calculateFee() {
     } else if (facility !== "大ホール") {
       baseFee *= 3; // その他の施設は3倍
     }
-    // 大ホール・入場料徴収ありの場合は倍率なし（元の料金のまま）
+    // 大ホール・入場料徴収ありの場合は倍率なし(元の料金のまま)
   } else if (purpose === "practice" && facility === "大ホール") {
     baseFee *= 0.6;
   }
 
-  // 午後5時以降自動加算（大ホール・小ホール・ふるさと広場以外）
+  // 午後5時以降自動加算(大ホール・小ホール・ふるさと広場以外)
   const after5Slots = ["18-22", "13-22", "9-22"];
   if (
     !["大ホール", "小ホール", "ふるさと広場"].includes(facility) &&
@@ -665,6 +665,7 @@ class Carousel {
 document.addEventListener("DOMContentLoaded", () => {
   new Carousel();
 });
+
 // アコーディオン機能
 document.querySelectorAll(".faq-question").forEach((question) => {
   question.addEventListener("click", () => {
@@ -673,7 +674,7 @@ document.querySelectorAll(".faq-question").forEach((question) => {
   });
 });
 
-// JavaScript部分
+// やりたいこと占い
 document.addEventListener("DOMContentLoaded", function () {
   // 部屋リスト
   const rooms = [
@@ -720,7 +721,7 @@ document.addEventListener("DOMContentLoaded", function () {
     "🎨中年の本気・写経アート展",
     "🎮ゆるゲーマー頂上決戦",
     "🍡お団子片手に推し語り会",
-    "📸館長を探せ！写真コンテスト",
+    "📸館長を探せ!写真コンテスト",
     "☕コスモなぽりたんと語る朝活カフェ",
     "🎋願いごとを叫ぶ短冊朗読会",
     "🧘心を無にするおじさんヨガ",
@@ -731,7 +732,7 @@ document.addEventListener("DOMContentLoaded", function () {
     "🍵館長にお茶を点ててみた体験",
     "🪩地味ハロウィン事前練習会",
     "🎤マイクを離さないカラオケ地獄",
-    "🏆なんでも表彰式（おじさん自作）",
+    "🏆なんでも表彰式(おじさん自作)",
     "📊スライド芸人選手権",
     "📸#映えない写真展",
     "💻人生プレゼン大会",
