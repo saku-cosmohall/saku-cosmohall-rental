@@ -262,6 +262,71 @@
             transform: translateY(-2px);
             box-shadow: 0 2px 4px rgba(78, 205, 196, 0.6);
         }
+        .exp-log {
+            margin-top: 15px;
+            background: linear-gradient(135deg, #f0f9f8 0%, #e8f5f3 100%);
+            border-radius: 12px;
+            padding: 12px 15px;
+            border: 1px solid rgba(78, 205, 196, 0.2);
+            max-height: 100px; /* 高さを固定 */
+            overflow-y: auto; /* 縦スクロール有効 */
+        }
+        /* スクロールバーのカスタマイズ(オプション) */
+        .exp-log::-webkit-scrollbar {
+            width: 8px;
+        }
+        .exp-log::-webkit-scrollbar-track {
+            background: rgba(78, 205, 196, 0.1);
+            border-radius: 10px;
+        }
+        .exp-log::-webkit-scrollbar-thumb {
+            background: rgba(78, 205, 196, 0.4);
+            border-radius: 10px;
+        }
+        .exp-log::-webkit-scrollbar-thumb:hover {
+            background: rgba(78, 205, 196, 0.6);
+        }
+        .exp-log-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.8rem;
+            color: #223843;
+            padding: 6px 0;
+            border-bottom: 1px solid rgba(78, 205, 196, 0.1);
+        }
+        .exp-log-item:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+        .exp-log-item:first-child {
+            padding-top: 0;
+        }
+        .exp-log-date {
+            font-size: 0.6rem;
+            color: #999;
+            font-weight: 600;
+            min-width: 35px;
+            flex-shrink: 0;
+        }
+        .exp-log-icon {
+            font-size: 1rem;
+            flex-shrink: 0;
+        }
+        .exp-log-text {
+            flex: 1;
+            font-weight: 600;
+            text-align: left;
+        }
+        .exp-log-value {
+            color: #4ecdc4;
+            font-weight: bold;
+            font-size: 0.85rem;
+            background: white;
+            padding: 2px 8px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(78, 205, 196, 0.2);
+        }
 
         /* レスポンシブ対応 */
         @media (max-width: 768px) {
@@ -315,7 +380,6 @@
 
             .character-name {
                 font-size: 1.5rem;
-                margin-bottom: 20px;
             }
 
             .-badge {
@@ -347,6 +411,21 @@
                 padding: 10px 20px;
                 font-size: 0.9rem;
             }
+            .exp-log {
+               padding: 10px 12px;
+               max-height: 50px; 
+            }
+            .exp-log-item {
+                font-size: 0.75rem;
+                gap: 8px;
+            }
+            .exp-log-icon {
+                font-size: 1rem;
+            }
+            .exp-log-value {
+                font-size: 0.8rem;
+                padding: 2px 6px;
+            }
         }
     </style>
 </head>
@@ -376,22 +455,44 @@
                 <div class="character-header">
                     <div class="name--wrapper">
                         <h1 class="character-name">コスモなぽりたん</h1>
-                        <div class="level-badge">Lv.1</div>
+                        <div class="level-badge">Lv.2</div>
                     </div>
                     <div class="level-section">
                         <div class="level-info">
                             <div class="exp-info">次のレベルまで</div>
-                            <span class="exp-text">40 / 100 EXP</span>
+                            <span class="exp-text">30 / 500 EXP</span>
                         </div>
                         <div class="exp-bar-container">
-                            <div class="exp-bar" style="width: 40%;">
+                            <div class="exp-bar" style="width: 6%;">
+                            </div>
+                        </div>
+                        <div class="exp-log">
+                            <div class="exp-log-item">
+                                <span class="exp-log-date">11/15</span>
+                                <span class="exp-log-text">大ホールが利用された（リハーサル）</span>
+                                <span class="exp-log-value">+20</span>
+                            </div>
+                            <div class="exp-log-item">
+                                <span class="exp-log-date">11/15</span>
+                                <span class="exp-log-text">会議室1が利用された</span>
+                                <span class="exp-log-value">+10</span>
+                            </div>
+                            <div class="exp-log-item">
+                                <span class="exp-log-date">11/16</span>
+                                <span class="exp-log-text">大ホールが利用された</span>
+                                <span class="exp-log-value">+50</span>
+                            </div>
+                                                        <div class="exp-log-item">
+                                <span class="exp-log-date">11/16</span>
+                                <span class="exp-log-text">練習室が利用された</span>
+                                <span class="exp-log-value">+10</span>
                             </div>
                         </div>
                     </div>
                 </div>
 
                 <div class="character-image">
-                    <img src="cosmo-napolitan.png" alt="コスモなぽりたん">
+                    <img src="cosmo-napolitan_Lv2.png" alt="コスモなぽりたんLv2">
                 </div>
 
     </div>
@@ -404,7 +505,7 @@
                 labels: ['HP', '優しさ', '精神力', '人気', '面白さ', '企画力'],
                 datasets: [{
                     label: 'ステータス',
-                    data: [50, 100, 20, 10, 30, 50], // 各ステータスの値（100点満点）
+                    data: [60, 100, 30, 10, 30, 50], // 各ステータスの値（100点満点）
                     backgroundColor: 'rgba(78, 205, 196, 0.2)',
                     borderColor: '#4ecdc4',
                     borderWidth: 2,
