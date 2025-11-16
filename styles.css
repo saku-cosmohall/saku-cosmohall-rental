@@ -1939,6 +1939,48 @@ footer {
   font-weight: bold;
   color: var(--text-dark);
 }
+/* スライダーのクリック停止機能 */
+.slider-wrapper {
+    position: relative;
+}
+
+.slider-track {
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+}
+
+.slider-track:hover {
+    opacity: 0.9;
+}
+
+/* 停止中の一時停止マーク */
+.slider-track.paused::before {
+    content: '❚❚';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 3rem;
+    color: rgba(255, 255, 255, 0.9);
+    background: rgba(78, 205, 196, 0.8);
+    padding: 20px 30px;
+    border-radius: 15px;
+    z-index: 10;
+    pointer-events: none;
+    animation: fadeIn 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+}
 /* 銀河の魔法 */
 /* .galaxy-magic {
     background: 
