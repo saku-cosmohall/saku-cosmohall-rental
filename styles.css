@@ -520,7 +520,7 @@ nav a {
   text-align: left;
   margin-bottom: 1rem;
 }
-.news-item li:not(:last-child) {
+.news-item:not(:last-child) {
   margin-bottom: 1rem;
 }
 .news-list {
