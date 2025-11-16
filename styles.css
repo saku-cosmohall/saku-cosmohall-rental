@@ -520,6 +520,9 @@ nav a {
   text-align: left;
   margin-bottom: 1rem;
 }
+.news-item li:not(:last-child) {
+  margin-bottom: 1rem;
+}
 .news-list {
   list-style: none; /* リストマーカー消去 */
   padding-left: 0; /* 左の余白もリセット */
