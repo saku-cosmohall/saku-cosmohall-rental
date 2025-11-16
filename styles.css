@@ -1948,35 +1948,6 @@ footer {
 .slider-track:hover {
   opacity: 0.9;
 }
-
-/* 停止中の一時停止マーク */
-.slider-track.paused::before {
-    content: '❚❚';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 1.5rem;
-    color: rgba(255, 255, 255, 0.9);
-    background: rgba(128, 128, 128, 0.6);
-    padding: 10px 15px;
-    border-radius: 10px;
-    z-index: 10;
-    pointer-events: none;
-    animation: fadeIn 0.3s ease;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translate(-50%, -50%) scale(0.8);
-  }
-  to {
-    opacity: 1;
-    transform: translate(-50%, -50%) scale(1);
-  }
-}
 /* 銀河の魔法 */
 /* .galaxy-magic {
     background: 
