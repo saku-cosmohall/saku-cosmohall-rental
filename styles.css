@@ -1893,7 +1893,6 @@ iframe {
     width: 100%;
   }
 }
-/* フッター */
 
 /* フッター */
 footer {
@@ -1968,10 +1967,12 @@ footer {
 @media (max-width: 768px) {
   .footer-nav {
     gap: 15px;
+    flex-direction: column;
   }
   
   .footer-nav a {
     font-size: 0.85rem;
+    margin: 0;
   }
 }
 
