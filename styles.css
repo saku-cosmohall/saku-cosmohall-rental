@@ -1895,11 +1895,84 @@ iframe {
 }
 /* フッター */
 
+/* フッター */
 footer {
   background-color: var(--text-dark);
   color: white;
   text-align: center;
-  padding: 2rem 1rem;
+  padding: 40px 20px 20px;
+}
+
+.footer-nav {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
+}
+
+.footer-nav a {
+  color: white;
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: color 0.3s ease;
+  padding: 5px 10px;
+}
+
+.footer-nav a:hover {
+  color: var(--mint);
+}
+
+.footer-social {
+  margin-bottom: 25px;
+}
+
+.social-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: white;
+  text-decoration: none;
+  font-size: 0.9rem;
+  padding: 8px 16px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+}
+
+.social-link:hover {
+  background: rgba(78, 205, 196, 0.2);
+  color: var(--mint);
+}
+
+.social-icon {
+  font-size: 1.1rem;
+}
+
+.footer-info {
+  margin-bottom: 20px;
+  font-size: 0.85rem;
+  line-height: 1.8;
+}
+
+.footer-info p {
+  margin: 5px 0;
+}
+
+.copyright {
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.7);
+  margin-top: 20px;
+}
+
+@media (max-width: 768px) {
+  .footer-nav {
+    gap: 15px;
+  }
+  
+  .footer-nav a {
+    font-size: 0.85rem;
+  }
 }
 
 /* CSS部分 */
