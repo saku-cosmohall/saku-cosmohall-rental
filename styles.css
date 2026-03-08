@@ -675,11 +675,10 @@ nav a {
   z-index: 1;
 }
 .price {
-  background-color: var(--light-bg);
+  background-color: var(--mint);
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: var(--light-bg);
   padding: 6rem 3rem;
 }
 
