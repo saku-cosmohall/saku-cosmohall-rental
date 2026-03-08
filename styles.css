@@ -6,8 +6,10 @@
   z-index: 999;
   transform: rotate(16deg); /* 最初は少し右に傾く */
   opacity: 0;
-  transition: right 2.2s cubic-bezier(0.68, -0.55, 0.265, 1.55),
-    transform 2.2s ease, opacity 1.2s ease;
+  transition:
+    right 2.2s cubic-bezier(0.68, -0.55, 0.265, 1.55),
+    transform 2.2s ease,
+    opacity 1.2s ease;
 }
 
 .floating-character.show {
@@ -91,6 +93,7 @@ html {
   --mint: #4ecdc4;
   --yellow: #ffd700;
   --light-yellow: #ffed4e;
+  --light-yellow-rgb: 255, 237, 78;
   --pink: #ff6b6b;
   --light-bg: #f5fcfa;
   --text-dark: #223843;
@@ -530,9 +533,7 @@ nav a {
 
 .pain-points {
   padding: 6rem 3rem;
-  background-color: var(--mint);
-  border-bottom-left-radius: 50% 5vw;
-  border-bottom-right-radius: 50% 5vw;
+  background-color: rgba(var(--light-yellow-rgb), 0.3);
 }
 .pain-points-wrapper {
   max-width: 1280px;
@@ -799,7 +800,9 @@ nav a {
   bottom: 0;
   border-radius: 25px;
   padding: 3px;
-  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
   mask-composite: xor;
   opacity: 0;
   transition: opacity 0.4s ease;
@@ -840,7 +843,8 @@ nav a {
 /* ホバー時に背景画像を表示 */
 
 .room1:hover .card-main {
-  background-image: linear-gradient(
+  background-image:
+    linear-gradient(
       135deg,
       rgba(255, 255, 255, 0.15) 0%,
       rgba(78, 205, 196, 0.1) 50%,
@@ -849,7 +853,8 @@ nav a {
     url("images/img_kensyuu.png");
 }
 .room2:hover .card-main {
-  background-image: linear-gradient(
+  background-image:
+    linear-gradient(
       135deg,
       rgba(255, 255, 255, 0.15) 0%,
       rgba(78, 205, 196, 0.1) 50%,
@@ -858,7 +863,8 @@ nav a {
     url("images/img_gakushu.jpg");
 }
 .room3:hover .card-main {
-  background-image: linear-gradient(
+  background-image:
+    linear-gradient(
       135deg,
       rgba(255, 255, 255, 0.15) 0%,
       rgba(91, 209, 199, 0.1) 50%,
@@ -867,7 +873,8 @@ nav a {
     url("images/img_rensyuu.png");
 }
 .room4:hover .card-main {
-  background-image: linear-gradient(
+  background-image:
+    linear-gradient(
       135deg,
       rgba(255, 255, 255, 0.15) 0%,
       rgba(91, 209, 199, 0.1) 50%,
@@ -876,7 +883,8 @@ nav a {
     url("images/img_lobby.jpg");
 }
 .room5:hover .card-main {
-  background-image: linear-gradient(
+  background-image:
+    linear-gradient(
       135deg,
       rgba(255, 255, 255, 0.15) 0%,
       rgba(91, 209, 199, 0.1) 50%,
@@ -885,7 +893,8 @@ nav a {
     url("images/img_kaigishitu2.png");
 }
 .room6:hover .card-main {
-  background-image: linear-gradient(
+  background-image:
+    linear-gradient(
       135deg,
       rgba(255, 255, 255, 0.15) 0%,
       rgba(91, 209, 199, 0.1) 50%,
@@ -894,7 +903,8 @@ nav a {
     url("images/img_chashitu.jpg");
 }
 .room7:hover .card-main {
-  background-image: linear-gradient(
+  background-image:
+    linear-gradient(
       135deg,
       rgba(255, 255, 255, 0.15) 0%,
       rgba(91, 209, 199, 0.1) 50%,
@@ -903,7 +913,8 @@ nav a {
     url("images/img_kaigishitu11.png");
 }
 .room8:hover .card-main {
-  background-image: linear-gradient(
+  background-image:
+    linear-gradient(
       135deg,
       rgba(255, 255, 255, 0.15) 0%,
       rgba(91, 209, 199, 0.1) 50%,
@@ -1090,7 +1101,8 @@ h3.price-calc {
   background: white;
   padding: 24px;
   border-radius: 20px;
-  box-shadow: 0 10px 30px rgba(125, 211, 192, 0.08),
+  box-shadow:
+    0 10px 30px rgba(125, 211, 192, 0.08),
     0 5px 15px rgba(125, 211, 192, 0.05);
   border: 1px solid rgba(125, 211, 192, 0.1);
   position: relative;
@@ -1136,18 +1148,23 @@ h3.price-calc {
   cursor: pointer;
   transition: all 0.3s ease;
   appearance: none;
-  background-image: linear-gradient(45deg, transparent 50%, #7dd3c0 50%),
+  background-image:
+    linear-gradient(45deg, transparent 50%, #7dd3c0 50%),
     linear-gradient(135deg, #7dd3c0 50%, transparent 50%);
-  background-position: calc(100% - 18px) calc(1em + 2px),
+  background-position:
+    calc(100% - 18px) calc(1em + 2px),
     calc(100% - 13px) calc(1em + 2px);
-  background-size: 5px 5px, 5px 5px;
+  background-size:
+    5px 5px,
+    5px 5px;
   background-repeat: no-repeat;
 }
 
 #feeForm select:focus {
   outline: none;
   border-color: #7dd3c0;
-  box-shadow: 0 0 0 3px rgba(125, 211, 192, 0.1),
+  box-shadow:
+    0 0 0 3px rgba(125, 211, 192, 0.1),
     0 5px 15px rgba(125, 211, 192, 0.1);
   transform: translateY(-1px);
 }
@@ -1234,7 +1251,8 @@ h3.price-calc {
 #feeForm input[type="number"]:focus {
   outline: none;
   border-color: #7dd3c0;
-  box-shadow: 0 0 0 3px rgba(125, 211, 192, 0.1),
+  box-shadow:
+    0 0 0 3px rgba(125, 211, 192, 0.1),
     0 5px 15px rgba(125, 211, 192, 0.1);
   transform: translateY(-1px);
 }
@@ -1972,7 +1990,7 @@ footer {
     gap: 15px;
     flex-direction: column;
   }
-  
+
   .footer-nav a {
     font-size: 0.85rem;
     margin: 0;
