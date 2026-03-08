@@ -639,6 +639,7 @@ nav a {
 }
 #price::before {
   content: "飲食OK（ホール以外）";
+  color: #fff;
   font-size: 0.8rem;
   font-family: "Zen Maru Gothic", sans-serif;
   position: absolute;
@@ -657,6 +658,7 @@ nav a {
 }
 #price::after {
   content: "サプライズもお手伝い可";
+  color: #fff;
   font-size: 0.8rem;
   font-family: "Zen Maru Gothic", sans-serif;
   position: absolute;
