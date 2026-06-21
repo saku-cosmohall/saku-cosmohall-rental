@@ -45,6 +45,8 @@
         }
         .name--wrapper {
             display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
             height: auto;
             align-items: center;
             gap: 20px;
@@ -370,6 +372,15 @@
             /* スマホでは戻るボタンを下に */
             .back-button {
                 order: 3; /* 一番下に */
+            }
+
+            .name--wrapper {
+                gap: 12px;
+            }
+
+            .exp-log-item {
+                flex-wrap: wrap;
+                align-items: flex-start;
             }
 
             .stats-section {
