@@ -337,6 +337,24 @@
             box-shadow: 0 1px 3px rgba(78, 205, 196, 0.2);
         }
 
+        .evolution-record {
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            padding-bottom: 10px;
+        }
+
+        .evolution-track {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            align-items: flex-start;
+            min-width: max-content;
+        }
+
+        .evolution-track > div {
+            flex: 0 0 auto;
+        }
+
         /* レスポンシブ対応 */
         @media (max-width: 768px) {
             .pokedex-card {
@@ -647,9 +665,9 @@
                 <div class="character-image">
                     <img src="images/napolitan_lv4.webp" alt="コスモなぽりたんLv4">
                 </div>
-                <div style="background: linear-gradient(135deg, rgba(232, 202, 243, 0.3) 0%, rgba(200, 184, 224, 0.2) 100%); border-radius: 12px; padding: 15px; margin-top: 15px;">
+                <div class="evolution-record" style="background: linear-gradient(135deg, rgba(232, 202, 243, 0.3) 0%, rgba(200, 184, 224, 0.2) 100%); border-radius: 12px; padding: 15px; margin-top: 15px;">
                     <div style="font-size: 0.8rem; color: #a89dc7; font-weight: bold; margin-bottom: 10px; text-align: center;">📖 進化の記録</div>
-                    <div style="display: flex; gap: 10px; justify-content: center; align-items: flex-start;">
+                    <div class="evolution-track">
                         <div style="text-align: center;">
                             <img src="images/cosmo-napolitan_Lv1.png" alt="Lv1" style="width: auto; height: 100px; opacity: 0.7; border-radius: 8px;">
                             <div style="font-size: 0.7rem; color: #666; margin-top: 5px;">Lv.1</div>
