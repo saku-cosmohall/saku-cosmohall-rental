@@ -903,7 +903,7 @@ nav a {
 
 .label {
   background: var(--mint);
-  color: var(--text-dark);
+  color: white;
   padding: 0.3rem 1rem;
   border-radius: 25px;
   font-weight: bold;
