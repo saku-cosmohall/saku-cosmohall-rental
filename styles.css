@@ -572,7 +572,9 @@ nav a {
   display: block;
 }
 
-.pain-points > p.solve-lead {
+.pain-points > .solve-lead {
+  display: block;
+  text-decoration: none;
   text-align: center;
   margin: 4rem auto 0;
   padding: 1rem 2.5rem;
@@ -587,7 +589,7 @@ nav a {
 }
 
 /* 動きをつけて目を引く */
-.pain-points > p.solve-lead:hover {
+.pain-points > .solve-lead:hover {
   transform: scale(1.05);
 }
 .slider-track img {
@@ -900,7 +902,7 @@ nav a {
 }
 
 .label {
-  background: var(--yellow);
+  background: var(--mint);
   color: var(--text-dark);
   padding: 0.3rem 1rem;
   border-radius: 25px;
